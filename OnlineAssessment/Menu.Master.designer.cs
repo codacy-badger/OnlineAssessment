@@ -13,6 +13,51 @@ namespace OnlineAssessment {
     public partial class Menu {
         
         /// <summary>
+        /// lecWorkLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lecWorkLink;
+        
+        /// <summary>
+        /// lecCreateAssessLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lecCreateAssessLink;
+        
+        /// <summary>
+        /// lecSubLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lecSubLink;
+        
+        /// <summary>
+        /// stuDoAssessLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stuDoAssessLink;
+        
+        /// <summary>
+        /// stuViewAssessLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stuViewAssessLink;
+        
+        /// <summary>
         /// SiteMapPath1 control.
         /// </summary>
         /// <remarks>
