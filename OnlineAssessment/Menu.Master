@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Menu.master.cs" Inherits="OnlineAssessment.Menu" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/body.css" />
+    <title></title>
+
+</head>
+<body style="width: 90%;margin-left: 5%;">
+   
+            <div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="Homepage.aspx" class="logo">Online Assessment Site</a>
+                                        <asp:ContentPlaceHolder ID="Header" runat="server">
+
+                                        </asp:ContentPlaceHolder>
+                                        <asp:ContentPlaceHolder ID="Account" runat="server">
+
+                                        </asp:ContentPlaceHolder>
+								</header>
+                            <div>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                 </asp:ContentPlaceHolder>
+                            </div>
+                               
+             </div>
+             </div>
+             </div>
+</body>
+</html>
+

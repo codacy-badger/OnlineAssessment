@@ -1,0 +1,709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AssessmentModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Assessment">
+          <Key>
+            <PropertyRef Name="AssessmentCode" />
+          </Key>
+          <Property Name="AssessmentCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="AssessmentTitle" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AssessmentYear" Type="date" Nullable="false" />
+          <Property Name="duration" Type="int" Nullable="false" />
+          <Property Name="Publicity" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LecID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lecturer">
+          <Key>
+            <PropertyRef Name="LecID" />
+          </Key>
+          <Property Name="LecID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="LecName" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="LecEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LecPass" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CourseID" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MCQ">
+          <Key>
+            <PropertyRef Name="MCQID" />
+          </Key>
+          <Property Name="MCQID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="MCQuestion" Type="varchar(max)" Nullable="false" />
+          <Property Name="Opt1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opt2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opt3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opt4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COpt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AssessmentCode" Type="varchar" MaxLength="5" />
+          <Property Name="Img" Type="image" />
+        </EntityType>
+        <EntityType Name="StudAns">
+          <Key>
+            <PropertyRef Name="StudAnsID" />
+          </Key>
+          <Property Name="StudAnsID" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="StudID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="AssessmentCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="QuestionID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="WrittenAns" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudCourse">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="StudID" />
+          </Key>
+          <Property Name="CourseID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="StudID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Sem" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudID" />
+          </Key>
+          <Property Name="StudID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="StudName" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="StudEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudPass" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TakenAss">
+          <Key>
+            <PropertyRef Name="AssessmentCode" />
+            <PropertyRef Name="StudID" />
+          </Key>
+          <Property Name="AssessmentCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="StudID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="mark" Type="int" />
+        </EntityType>
+        <EntityType Name="WrittenQuestion">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Question" Type="varchar(max)" Nullable="false" />
+          <Property Name="AssessmentCode" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Assessment_ToTable">
+          <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="1" />
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lecturer">
+              <PropertyRef Name="LecID" />
+            </Principal>
+            <Dependent Role="Assessment">
+              <PropertyRef Name="LecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lecturer_ToTable">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="Lecturer">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MCQ_ToTable">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="0..1" />
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentCode" />
+            </Principal>
+            <Dependent Role="MCQ">
+              <PropertyRef Name="AssessmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudAns_ToTable">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1" />
+          <End Role="StudAns" Type="Self.StudAns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentCode" />
+            </Principal>
+            <Dependent Role="StudAns">
+              <PropertyRef Name="AssessmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudAns_ToTable1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudAns" Type="Self.StudAns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudID" />
+            </Principal>
+            <Dependent Role="StudAns">
+              <PropertyRef Name="StudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudAns_ToTable2">
+          <End Role="WrittenQuestion" Type="Self.WrittenQuestion" Multiplicity="1" />
+          <End Role="StudAns" Type="Self.StudAns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WrittenQuestion">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="StudAns">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudCourse_ToTable">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="StudCourse" Type="Self.StudCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="StudCourse">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudCourse_ToTable1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudCourse" Type="Self.StudCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudID" />
+            </Principal>
+            <Dependent Role="StudCourse">
+              <PropertyRef Name="StudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakenAss_ToTable">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1" />
+          <End Role="TakenAss" Type="Self.TakenAss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentCode" />
+            </Principal>
+            <Dependent Role="TakenAss">
+              <PropertyRef Name="AssessmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakenAss_ToTable1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="TakenAss" Type="Self.TakenAss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudID" />
+            </Principal>
+            <Dependent Role="TakenAss">
+              <PropertyRef Name="StudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WrittenQuestion_ToTable">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1" />
+          <End Role="WrittenQuestion" Type="Self.WrittenQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentCode" />
+            </Principal>
+            <Dependent Role="WrittenQuestion">
+              <PropertyRef Name="AssessmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AssessmentModel1StoreContainer">
+          <EntitySet Name="Assessment" EntityType="Self.Assessment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lecturer" EntityType="Self.Lecturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MCQ" EntityType="Self.MCQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudAns" EntityType="Self.StudAns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudCourse" EntityType="Self.StudCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TakenAss" EntityType="Self.TakenAss" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WrittenQuestion" EntityType="Self.WrittenQuestion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Assessment_ToTable" Association="Self.FK_Assessment_ToTable">
+            <End Role="Lecturer" EntitySet="Lecturer" />
+            <End Role="Assessment" EntitySet="Assessment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lecturer_ToTable" Association="Self.FK_Lecturer_ToTable">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Lecturer" EntitySet="Lecturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MCQ_ToTable" Association="Self.FK_MCQ_ToTable">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="MCQ" EntitySet="MCQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudAns_ToTable" Association="Self.FK_StudAns_ToTable">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="StudAns" EntitySet="StudAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudAns_ToTable1" Association="Self.FK_StudAns_ToTable1">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudAns" EntitySet="StudAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudAns_ToTable2" Association="Self.FK_StudAns_ToTable2">
+            <End Role="WrittenQuestion" EntitySet="WrittenQuestion" />
+            <End Role="StudAns" EntitySet="StudAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudCourse_ToTable" Association="Self.FK_StudCourse_ToTable">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="StudCourse" EntitySet="StudCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudCourse_ToTable1" Association="Self.FK_StudCourse_ToTable1">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudCourse" EntitySet="StudCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakenAss_ToTable" Association="Self.FK_TakenAss_ToTable">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="TakenAss" EntitySet="TakenAss" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakenAss_ToTable1" Association="Self.FK_TakenAss_ToTable1">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="TakenAss" EntitySet="TakenAss" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WrittenQuestion_ToTable" Association="Self.FK_WrittenQuestion_ToTable">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="WrittenQuestion" EntitySet="WrittenQuestion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AssessmentModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Assessment">
+          <Key>
+            <PropertyRef Name="AssessmentCode" />
+          </Key>
+          <Property Name="AssessmentCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AssessmentTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AssessmentYear" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="duration" Type="Int32" Nullable="false" />
+          <Property Name="Publicity" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LecID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lecturer" Relationship="Self.FK_Assessment_ToTable" FromRole="Assessment" ToRole="Lecturer" />
+          <NavigationProperty Name="MCQs" Relationship="Self.FK_MCQ_ToTable" FromRole="Assessment" ToRole="MCQ" />
+          <NavigationProperty Name="StudAns" Relationship="Self.FK_StudAns_ToTable" FromRole="Assessment" ToRole="StudAns" />
+          <NavigationProperty Name="TakenAsses" Relationship="Self.FK_TakenAss_ToTable" FromRole="Assessment" ToRole="TakenAss" />
+          <NavigationProperty Name="WrittenQuestions" Relationship="Self.FK_WrittenQuestion_ToTable" FromRole="Assessment" ToRole="WrittenQuestion" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Lecturers" Relationship="Self.FK_Lecturer_ToTable" FromRole="Course" ToRole="Lecturer" />
+          <NavigationProperty Name="StudCourses" Relationship="Self.FK_StudCourse_ToTable" FromRole="Course" ToRole="StudCourse" />
+        </EntityType>
+        <EntityType Name="Lecturer">
+          <Key>
+            <PropertyRef Name="LecID" />
+          </Key>
+          <Property Name="LecID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LecName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LecEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LecPass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Assessments" Relationship="Self.FK_Assessment_ToTable" FromRole="Lecturer" ToRole="Assessment" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Lecturer_ToTable" FromRole="Lecturer" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="MCQ">
+          <Key>
+            <PropertyRef Name="MCQID" />
+          </Key>
+          <Property Name="MCQID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MCQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opt1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opt2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opt3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opt4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COpt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AssessmentCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Assessment" Relationship="Self.FK_MCQ_ToTable" FromRole="MCQ" ToRole="Assessment" />
+        </EntityType>
+        <EntityType Name="StudAn">
+          <Key>
+            <PropertyRef Name="StudAnsID" />
+          </Key>
+          <Property Name="StudAnsID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AssessmentCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuestionID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WrittenAns" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Assessment" Relationship="Self.FK_StudAns_ToTable" FromRole="StudAns" ToRole="Assessment" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudAns_ToTable1" FromRole="StudAns" ToRole="Student" />
+          <NavigationProperty Name="WrittenQuestion" Relationship="Self.FK_StudAns_ToTable2" FromRole="StudAns" ToRole="WrittenQuestion" />
+        </EntityType>
+        <EntityType Name="StudCourse">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="StudID" />
+          </Key>
+          <Property Name="CourseID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sem" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_StudCourse_ToTable" FromRole="StudCourse" ToRole="Course" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudCourse_ToTable1" FromRole="StudCourse" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudID" />
+          </Key>
+          <Property Name="StudID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudPass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StudAns" Relationship="Self.FK_StudAns_ToTable1" FromRole="Student" ToRole="StudAns" />
+          <NavigationProperty Name="StudCourses" Relationship="Self.FK_StudCourse_ToTable1" FromRole="Student" ToRole="StudCourse" />
+          <NavigationProperty Name="TakenAsses" Relationship="Self.FK_TakenAss_ToTable1" FromRole="Student" ToRole="TakenAss" />
+        </EntityType>
+        <EntityType Name="TakenAss">
+          <Key>
+            <PropertyRef Name="AssessmentCode" />
+            <PropertyRef Name="StudID" />
+          </Key>
+          <Property Name="AssessmentCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mark" Type="Int32" />
+          <NavigationProperty Name="Assessment" Relationship="Self.FK_TakenAss_ToTable" FromRole="TakenAss" ToRole="Assessment" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_TakenAss_ToTable1" FromRole="TakenAss" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="WrittenQuestion">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AssessmentCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Assessment" Relationship="Self.FK_WrittenQuestion_ToTable" FromRole="WrittenQuestion" ToRole="Assessment" />
+          <NavigationProperty Name="StudAns" Relationship="Self.FK_StudAns_ToTable2" FromRole="WrittenQuestion" ToRole="StudAns" />
+        </EntityType>
+        <Association Name="FK_Assessment_ToTable">
+          <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="1" />
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lecturer">
+              <PropertyRef Name="LecID" />
+            </Principal>
+            <Dependent Role="Assessment">
+              <PropertyRef Name="LecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MCQ_ToTable">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="0..1" />
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentCode" />
+            </Principal>
+            <Dependent Role="MCQ">
+              <PropertyRef Name="AssessmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudAns_ToTable">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1" />
+          <End Role="StudAns" Type="Self.StudAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentCode" />
+            </Principal>
+            <Dependent Role="StudAns">
+              <PropertyRef Name="AssessmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakenAss_ToTable">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1" />
+          <End Role="TakenAss" Type="Self.TakenAss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentCode" />
+            </Principal>
+            <Dependent Role="TakenAss">
+              <PropertyRef Name="AssessmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WrittenQuestion_ToTable">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1" />
+          <End Role="WrittenQuestion" Type="Self.WrittenQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentCode" />
+            </Principal>
+            <Dependent Role="WrittenQuestion">
+              <PropertyRef Name="AssessmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lecturer_ToTable">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="Lecturer">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudCourse_ToTable">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="StudCourse" Type="Self.StudCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="StudCourse">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudAns_ToTable1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudAns" Type="Self.StudAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudID" />
+            </Principal>
+            <Dependent Role="StudAns">
+              <PropertyRef Name="StudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudAns_ToTable2">
+          <End Role="WrittenQuestion" Type="Self.WrittenQuestion" Multiplicity="1" />
+          <End Role="StudAns" Type="Self.StudAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WrittenQuestion">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="StudAns">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudCourse_ToTable1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudCourse" Type="Self.StudCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudID" />
+            </Principal>
+            <Dependent Role="StudCourse">
+              <PropertyRef Name="StudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakenAss_ToTable1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="TakenAss" Type="Self.TakenAss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudID" />
+            </Principal>
+            <Dependent Role="TakenAss">
+              <PropertyRef Name="StudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AssessmentEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Assessments" EntityType="Self.Assessment" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="Lecturers" EntityType="Self.Lecturer" />
+          <EntitySet Name="MCQs" EntityType="Self.MCQ" />
+          <EntitySet Name="StudAns" EntityType="Self.StudAn" />
+          <EntitySet Name="StudCourses" EntityType="Self.StudCourse" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="TakenAsses" EntityType="Self.TakenAss" />
+          <EntitySet Name="WrittenQuestions" EntityType="Self.WrittenQuestion" />
+          <AssociationSet Name="FK_Assessment_ToTable" Association="Self.FK_Assessment_ToTable">
+            <End Role="Lecturer" EntitySet="Lecturers" />
+            <End Role="Assessment" EntitySet="Assessments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MCQ_ToTable" Association="Self.FK_MCQ_ToTable">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="MCQ" EntitySet="MCQs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudAns_ToTable" Association="Self.FK_StudAns_ToTable">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="StudAns" EntitySet="StudAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakenAss_ToTable" Association="Self.FK_TakenAss_ToTable">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="TakenAss" EntitySet="TakenAsses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WrittenQuestion_ToTable" Association="Self.FK_WrittenQuestion_ToTable">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="WrittenQuestion" EntitySet="WrittenQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lecturer_ToTable" Association="Self.FK_Lecturer_ToTable">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Lecturer" EntitySet="Lecturers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudCourse_ToTable" Association="Self.FK_StudCourse_ToTable">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="StudCourse" EntitySet="StudCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudAns_ToTable1" Association="Self.FK_StudAns_ToTable1">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudAns" EntitySet="StudAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudAns_ToTable2" Association="Self.FK_StudAns_ToTable2">
+            <End Role="WrittenQuestion" EntitySet="WrittenQuestions" />
+            <End Role="StudAns" EntitySet="StudAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudCourse_ToTable1" Association="Self.FK_StudCourse_ToTable1">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudCourse" EntitySet="StudCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakenAss_ToTable1" Association="Self.FK_TakenAss_ToTable1">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="TakenAss" EntitySet="TakenAsses" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AssessmentModel1StoreContainer" CdmEntityContainer="AssessmentEntities1">
+          <EntitySetMapping Name="Assessments">
+            <EntityTypeMapping TypeName="AssessmentModel1.Assessment">
+              <MappingFragment StoreEntitySet="Assessment">
+                <ScalarProperty Name="AssessmentCode" ColumnName="AssessmentCode" />
+                <ScalarProperty Name="AssessmentTitle" ColumnName="AssessmentTitle" />
+                <ScalarProperty Name="AssessmentYear" ColumnName="AssessmentYear" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="Publicity" ColumnName="Publicity" />
+                <ScalarProperty Name="LecID" ColumnName="LecID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="AssessmentModel1.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lecturers">
+            <EntityTypeMapping TypeName="AssessmentModel1.Lecturer">
+              <MappingFragment StoreEntitySet="Lecturer">
+                <ScalarProperty Name="LecID" ColumnName="LecID" />
+                <ScalarProperty Name="LecName" ColumnName="LecName" />
+                <ScalarProperty Name="LecEmail" ColumnName="LecEmail" />
+                <ScalarProperty Name="LecPass" ColumnName="LecPass" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MCQs">
+            <EntityTypeMapping TypeName="AssessmentModel1.MCQ">
+              <MappingFragment StoreEntitySet="MCQ">
+                <ScalarProperty Name="MCQID" ColumnName="MCQID" />
+                <ScalarProperty Name="MCQuestion" ColumnName="MCQuestion" />
+                <ScalarProperty Name="Opt1" ColumnName="Opt1" />
+                <ScalarProperty Name="Opt2" ColumnName="Opt2" />
+                <ScalarProperty Name="Opt3" ColumnName="Opt3" />
+                <ScalarProperty Name="Opt4" ColumnName="Opt4" />
+                <ScalarProperty Name="COpt" ColumnName="COpt" />
+                <ScalarProperty Name="AssessmentCode" ColumnName="AssessmentCode" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudAns">
+            <EntityTypeMapping TypeName="AssessmentModel1.StudAn">
+              <MappingFragment StoreEntitySet="StudAns">
+                <ScalarProperty Name="StudAnsID" ColumnName="StudAnsID" />
+                <ScalarProperty Name="StudID" ColumnName="StudID" />
+                <ScalarProperty Name="AssessmentCode" ColumnName="AssessmentCode" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="WrittenAns" ColumnName="WrittenAns" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudCourses">
+            <EntityTypeMapping TypeName="AssessmentModel1.StudCourse">
+              <MappingFragment StoreEntitySet="StudCourse">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="StudID" ColumnName="StudID" />
+                <ScalarProperty Name="Sem" ColumnName="Sem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="AssessmentModel1.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudID" ColumnName="StudID" />
+                <ScalarProperty Name="StudName" ColumnName="StudName" />
+                <ScalarProperty Name="StudEmail" ColumnName="StudEmail" />
+                <ScalarProperty Name="StudPass" ColumnName="StudPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TakenAsses">
+            <EntityTypeMapping TypeName="AssessmentModel1.TakenAss">
+              <MappingFragment StoreEntitySet="TakenAss">
+                <ScalarProperty Name="AssessmentCode" ColumnName="AssessmentCode" />
+                <ScalarProperty Name="StudID" ColumnName="StudID" />
+                <ScalarProperty Name="mark" ColumnName="mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WrittenQuestions">
+            <EntityTypeMapping TypeName="AssessmentModel1.WrittenQuestion">
+              <MappingFragment StoreEntitySet="WrittenQuestion">
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="AssessmentCode" ColumnName="AssessmentCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
