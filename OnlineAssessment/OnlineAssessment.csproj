@@ -1,6 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3BCC7699-A668-4803-AA27-01B8CE15C110}</ProjectGuid>
+    <ProjectGuid>{17B95D3C-41AB-4CBC-A911-3265709657A8}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -44,15 +43,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -72,196 +63,128 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Assessment.mdf" />
-    <Content Include="App_Data\Assessment_log.ldf">
-      <DependentUpon>Assessment.mdf</DependentUpon>
+    <Content Include="AboutUs.aspx" />
+    <Content Include="App_Data\MyDatabase.mdf" />
+    <Content Include="App_Data\MyDatabase_log.ldf">
+      <DependentUpon>MyDatabase.mdf</DependentUpon>
     </Content>
-    <Content Include="assets\css\body.css" />
-    <Content Include="assets\css\main.css" />
-    <Content Include="Common.ascx" />
-    <Content Include="CreateAssessment.aspx" />
-    <Content Include="CreateMCQuestion.aspx" />
-    <Content Include="CreateSubQuestion.aspx" />
-    <Content Include="Default.aspx" />
-    <Content Include="DefaultRedirectErrorPage.aspx" />
-    <Content Include="Enroll.aspx" />
-    <Content Include="GenericErrorPage.aspx" />
+    <Content Include="lecWorkList.aspx" />
+    <Content Include="lecWork.aspx" />
+    <Content Include="EnrollStudent.aspx" />
+    <Content Include="lecCreateAssess.aspx" />
+    <Content Include="lecCreateMCQ.aspx" />
+    <Content Include="lecCreateSubQ.aspx" />
+    <Content Include="CSS\body.css" />
+    <Content Include="CSS\main.css" />
+    <Content Include="EnrollLecture.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Http404ErrorPage.aspx" />
-    <Content Include="HttpErrorPage.aspx" />
-    <Content Include="images\checkmark.jpg" />
-    <Content Include="images\createAss.jpg" />
-    <Content Include="images\emptyImg.png" />
-    <Content Include="images\enroll.jpg" />
-    <Content Include="images\markAss.jpg" />
-    <Content Include="images\selectAss.jpg" />
-    <Content Include="images\ViewAssMark.jpg" />
-    <Content Include="LecturePage.aspx" />
-    <Content Include="Lecturer.ascx" />
-    <Content Include="Login.aspx" />
-    <Content Include="LoginControl.ascx" />
-    <Content Include="Logout.aspx" />
-    <Content Include="MarkingAssessment.aspx" />
-    <Content Include="Models\AssessmentModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AssessmentModel.Context.cs</LastGenOutput>
-      <DependentUpon>AssessmentModel.edmx</DependentUpon>
+    <Content Include="Images\CreateAssess.png" />
+    <Content Include="Images\iconWebsite.png" />
+    <Content Include="Images\Mark.png" />
+    <Content Include="Images\MarkAssess.png" />
+    <Content Include="Images\StudAssess.png" />
+    <Content Include="Images\Subjuct.png" />
+    <Content Include="lecPage.aspx" />
+    <Content Include="MainPage.aspx" />
+    <Content Include="lecWorkMark.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="stuDoAssess.aspx" />
+    <Content Include="stuPage.aspx" />
+    <Content Include="stuViewAssess.aspx" />
+    <Content Include="stuDoMCQ.aspx" />
+    <Content Include="stuDoSubQ.aspx" />
+    <Content Include="lecSubList.aspx" />
+    <Content Include="lecSub.aspx" />
+    <Content Include="stuViewMCQ.aspx" />
+    <Content Include="stuViewSubQ.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="Models\AssessmentModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AssessmentModel.edmx</DependentUpon>
-      <LastGenOutput>AssessmentModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model2.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.cs</LastGenOutput>
-    </Content>
-    <Content Include="Registration.aspx" />
-    <Content Include="SelectAssessment.aspx" />
-    <Content Include="Student.ascx" />
-    <Content Include="StudentPage.aspx" />
-    <Content Include="ViewAllMarks.aspx" />
-    <Content Include="ViewAssessment.aspx" />
-    <Content Include="ViewMCQuestion.aspx" />
-    <Content Include="ViewSubQuestion.aspx" />
-    <Content Include="ViewUnmarkAssessment.aspx" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common.ascx.cs">
-      <DependentUpon>Common.ascx</DependentUpon>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Common.ascx.designer.cs">
-      <DependentUpon>Common.ascx</DependentUpon>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CreateAssessment.aspx.cs">
-      <DependentUpon>CreateAssessment.aspx</DependentUpon>
+    <Compile Include="lecWorkList.aspx.cs">
+      <DependentUpon>lecWorkList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CreateAssessment.aspx.designer.cs">
-      <DependentUpon>CreateAssessment.aspx</DependentUpon>
+    <Compile Include="lecWorkList.aspx.designer.cs">
+      <DependentUpon>lecWorkList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CreateMCQuestion.aspx.cs">
-      <DependentUpon>CreateMCQuestion.aspx</DependentUpon>
+    <Compile Include="lecWork.aspx.cs">
+      <DependentUpon>lecWork.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CreateMCQuestion.aspx.designer.cs">
-      <DependentUpon>CreateMCQuestion.aspx</DependentUpon>
+    <Compile Include="lecWork.aspx.designer.cs">
+      <DependentUpon>lecWork.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CreateSubQuestion.aspx.cs">
-      <DependentUpon>CreateSubQuestion.aspx</DependentUpon>
+    <Compile Include="EnrollStudent.aspx.cs">
+      <DependentUpon>EnrollStudent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CreateSubQuestion.aspx.designer.cs">
-      <DependentUpon>CreateSubQuestion.aspx</DependentUpon>
+    <Compile Include="EnrollStudent.aspx.designer.cs">
+      <DependentUpon>EnrollStudent.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="lecCreateAssess.aspx.cs">
+      <DependentUpon>lecCreateAssess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="lecCreateAssess.aspx.designer.cs">
+      <DependentUpon>lecCreateAssess.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DefaultRedirectErrorPage.aspx.cs">
-      <DependentUpon>DefaultRedirectErrorPage.aspx</DependentUpon>
+    <Compile Include="lecCreateMCQ.aspx.cs">
+      <DependentUpon>lecCreateMCQ.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DefaultRedirectErrorPage.aspx.designer.cs">
-      <DependentUpon>DefaultRedirectErrorPage.aspx</DependentUpon>
+    <Compile Include="lecCreateMCQ.aspx.designer.cs">
+      <DependentUpon>lecCreateMCQ.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Enroll.aspx.cs">
-      <DependentUpon>Enroll.aspx</DependentUpon>
+    <Compile Include="lecCreateSubQ.aspx.cs">
+      <DependentUpon>lecCreateSubQ.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Enroll.aspx.designer.cs">
-      <DependentUpon>Enroll.aspx</DependentUpon>
+    <Compile Include="lecCreateSubQ.aspx.designer.cs">
+      <DependentUpon>lecCreateSubQ.aspx</DependentUpon>
     </Compile>
-    <Compile Include="GenericErrorPage.aspx.cs">
-      <DependentUpon>GenericErrorPage.aspx</DependentUpon>
+    <Compile Include="EnrollLecture.aspx.cs">
+      <DependentUpon>EnrollLecture.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GenericErrorPage.aspx.designer.cs">
-      <DependentUpon>GenericErrorPage.aspx</DependentUpon>
+    <Compile Include="EnrollLecture.aspx.designer.cs">
+      <DependentUpon>EnrollLecture.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Http404ErrorPage.aspx.cs">
-      <DependentUpon>Http404ErrorPage.aspx</DependentUpon>
+    <Compile Include="lecPage.aspx.cs">
+      <DependentUpon>lecPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Http404ErrorPage.aspx.designer.cs">
-      <DependentUpon>Http404ErrorPage.aspx</DependentUpon>
+    <Compile Include="lecPage.aspx.designer.cs">
+      <DependentUpon>lecPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HttpErrorPage.aspx.cs">
-      <DependentUpon>HttpErrorPage.aspx</DependentUpon>
+    <Compile Include="MainPage.aspx.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HttpErrorPage.aspx.designer.cs">
-      <DependentUpon>HttpErrorPage.aspx</DependentUpon>
+    <Compile Include="MainPage.aspx.designer.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LecturePage.aspx.cs">
-      <DependentUpon>LecturePage.aspx</DependentUpon>
+    <Compile Include="lecWorkMark.aspx.cs">
+      <DependentUpon>lecWorkMark.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LecturePage.aspx.designer.cs">
-      <DependentUpon>LecturePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Lecturer.ascx.cs">
-      <DependentUpon>Lecturer.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Lecturer.ascx.designer.cs">
-      <DependentUpon>Lecturer.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginControl.ascx.cs">
-      <DependentUpon>LoginControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginControl.ascx.designer.cs">
-      <DependentUpon>LoginControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Logout.aspx.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Logout.aspx.designer.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MarkingAssessment.aspx.cs">
-      <DependentUpon>MarkingAssessment.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MarkingAssessment.aspx.designer.cs">
-      <DependentUpon>MarkingAssessment.aspx</DependentUpon>
+    <Compile Include="lecWorkMark.aspx.designer.cs">
+      <DependentUpon>lecWorkMark.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu.Master.cs">
       <DependentUpon>Menu.Master</DependentUpon>
@@ -270,181 +193,92 @@
     <Compile Include="Menu.Master.designer.cs">
       <DependentUpon>Menu.Master</DependentUpon>
     </Compile>
-    <Compile Include="Models\Assessment.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AssessmentModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AssessmentModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AssessmentModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AssessmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AssessmentModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AssessmentModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Course.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Lecturer.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MCQ.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\StudAn.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\StudCourse.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Student.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TakenAss.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WrittenQuestion.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registration.aspx.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registration.aspx.designer.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SelectAssessment.aspx.cs">
-      <DependentUpon>SelectAssessment.aspx</DependentUpon>
+    <Compile Include="stuDoAssess.aspx.cs">
+      <DependentUpon>stuDoAssess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SelectAssessment.aspx.designer.cs">
-      <DependentUpon>SelectAssessment.aspx</DependentUpon>
+    <Compile Include="stuDoAssess.aspx.designer.cs">
+      <DependentUpon>stuDoAssess.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ShowImage.ashx.cs">
-      <DependentUpon>ShowImage.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Student.ascx.cs">
-      <DependentUpon>Student.ascx</DependentUpon>
+    <Compile Include="stuPage.aspx.cs">
+      <DependentUpon>stuPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Student.ascx.designer.cs">
-      <DependentUpon>Student.ascx</DependentUpon>
+    <Compile Include="stuPage.aspx.designer.cs">
+      <DependentUpon>stuPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="StudentPage.aspx.cs">
-      <DependentUpon>StudentPage.aspx</DependentUpon>
+    <Compile Include="stuViewAssess.aspx.cs">
+      <DependentUpon>stuViewAssess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StudentPage.aspx.designer.cs">
-      <DependentUpon>StudentPage.aspx</DependentUpon>
+    <Compile Include="stuViewAssess.aspx.designer.cs">
+      <DependentUpon>stuViewAssess.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewAllMarks.aspx.cs">
-      <DependentUpon>ViewAllMarks.aspx</DependentUpon>
+    <Compile Include="stuDoMCQ.aspx.cs">
+      <DependentUpon>stuDoMCQ.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewAllMarks.aspx.designer.cs">
-      <DependentUpon>ViewAllMarks.aspx</DependentUpon>
+    <Compile Include="stuDoMCQ.aspx.designer.cs">
+      <DependentUpon>stuDoMCQ.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewAssessment.aspx.cs">
-      <DependentUpon>ViewAssessment.aspx</DependentUpon>
+    <Compile Include="stuDoSubQ.aspx.cs">
+      <DependentUpon>stuDoSubQ.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewAssessment.aspx.designer.cs">
-      <DependentUpon>ViewAssessment.aspx</DependentUpon>
+    <Compile Include="stuDoSubQ.aspx.designer.cs">
+      <DependentUpon>stuDoSubQ.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewMCQuestion.aspx.cs">
-      <DependentUpon>ViewMCQuestion.aspx</DependentUpon>
+    <Compile Include="lecSubList.aspx.cs">
+      <DependentUpon>lecSubList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewMCQuestion.aspx.designer.cs">
-      <DependentUpon>ViewMCQuestion.aspx</DependentUpon>
+    <Compile Include="lecSubList.aspx.designer.cs">
+      <DependentUpon>lecSubList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewSubQuestion.aspx.cs">
-      <DependentUpon>ViewSubQuestion.aspx</DependentUpon>
+    <Compile Include="lecSub.aspx.cs">
+      <DependentUpon>lecSub.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewSubQuestion.aspx.designer.cs">
-      <DependentUpon>ViewSubQuestion.aspx</DependentUpon>
+    <Compile Include="lecSub.aspx.designer.cs">
+      <DependentUpon>lecSub.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewUnmarkAssessment.aspx.cs">
-      <DependentUpon>ViewUnmarkAssessment.aspx</DependentUpon>
+    <Compile Include="stuViewMCQ.aspx.cs">
+      <DependentUpon>stuViewMCQ.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewUnmarkAssessment.aspx.designer.cs">
-      <DependentUpon>ViewUnmarkAssessment.aspx</DependentUpon>
+    <Compile Include="stuViewMCQ.aspx.designer.cs">
+      <DependentUpon>stuViewMCQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="stuViewSubQ.aspx.cs">
+      <DependentUpon>stuViewSubQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="stuViewSubQ.aspx.designer.cs">
+      <DependentUpon>stuViewSubQ.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Menu.Master" />
-    <EntityDeploy Include="Models\AssessmentModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AssessmentModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\AssessmentModel.edmx.diagram">
-      <DependentUpon>AssessmentModel.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\Model2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model2.edmx.diagram">
-      <DependentUpon>Model2.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
-    <Content Include="ShowImage.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="webLec.sitemap" />
+    <Content Include="webStu.sitemap" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -459,9 +293,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53947</DevelopmentServerPort>
+          <DevelopmentServerPort>52982</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53947/</IISUrl>
+          <IISUrl>http://localhost:52982/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -475,8 +309,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

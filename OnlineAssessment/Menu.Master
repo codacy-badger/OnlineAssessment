@@ -5,37 +5,55 @@
 <html>
 <head runat="server">
 
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/body.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/body.css" />
     <title></title>
 
 </head>
-<body style="width: 90%;margin-left: 5%;">
-   
-            <div id="wrapper">
-
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-
-							<!-- Header -->
-								<header id="header">
-									<a href="Homepage.aspx" class="logo">Online Assessment Site</a>
-                                        <asp:ContentPlaceHolder ID="Header" runat="server">
-
-                                        </asp:ContentPlaceHolder>
-                                        <asp:ContentPlaceHolder ID="Account" runat="server">
-
-                                        </asp:ContentPlaceHolder>
-								</header>
-                            <div>
-                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                                 </asp:ContentPlaceHolder>
-                            </div>
-                               
-             </div>
-             </div>
-             </div>
+<body style="width: 90%; margin-left: 5%;">
+    <form runat="server">
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+                    <header id="header">
+                        <asp:LinkButton ID="logo" runat="server" Text="Online Assessment Site" OnClick="home_Click"></asp:LinkButton>
+                        <ul class="icons">
+                            <li>
+                                <asp:LinkButton ID="home" runat="server" Text="Home" Style="color: black" OnClick="home_Click"></asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="subject" runat="server" Text="Subject" Style="color: black" OnClick="subject_Click"></asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="assessment" runat="server" Text="Assessment" Style="color: black" OnClick="assessment_Click"></asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="mark" runat="server" Text="Mark" Style="color: black" OnClick="mark_Click"></asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="work" runat="server" Text="Work" Style="color: black" OnClick="work_Click"></asp:LinkButton></li>
+                            <li>
+                                <div class="dropdown">
+                                    <asp:LinkButton ID="account" runat="server" Text="Account" CssClass="dropbtn"></asp:LinkButton>
+                                    <div class="dropdown-content">
+                                        <a id="login" runat="server" href="MainPage.aspx" style="color: black">Login</a>
+                                        <a id="register" runat="server" href="Register.aspx" style="color: black">Register</a>
+                                        <a id="logout" runat="server" href="../MainPage.aspx" style="color: black">Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </header>
+                    <div>
+                        <asp:SiteMapPath ID="SiteMapPath1" runat="server" ></asp:SiteMapPath>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2018 Online Assessment Site. All Rights Reserved | Design by RSF2G3. <a href="AboutUs.aspx">About us</a></p>
+        </div>
+    </form>
 </body>
+
 </html>
+
 

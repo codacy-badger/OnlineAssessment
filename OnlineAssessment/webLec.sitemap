@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="lecPage.aspx" title="HomePage"  description="HomePage">
+    <siteMapNode url="lecSub.aspx" title="Subject"  description="Subject">
+      <siteMapNode url="EnrollLecture.aspx" title="Lecturer Enrollment"  description="Lecturer Enrollment" />
+      <siteMapNode url="lecSubList.aspx" title="Student Subject List"  description="Student Subject List" >
+        <siteMapNode url="EnrollStudent.aspx" title="Student Enrollment"  description="Student Enrollment" />
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="lecCreateAssess.aspx" title="CreateAssessment"  description="CreateAssessment" >
+      <siteMapNode url="lecCreateMCQ.aspx" title="Multiple Choice Question"  description="Multiple Choice Question" />
+      <siteMapNode url="lecCreateSubQ.aspx" title="Subjective Question"  description="Subjective Question" />
+    </siteMapNode>
+    <siteMapNode url="lecWork.aspx" title="Work"  description="Work" >
+      <siteMapNode url="lecWorkList.aspx" title="Work List"  description="Work List" >
+        <siteMapNode url="lecWorkMark.aspx" title="Marking"  description="Marking" />
+      </siteMapNode>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

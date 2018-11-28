@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="stuPage.aspx" title="HomePage"  description="HomePage">
+    <siteMapNode url="stuDoAssess.aspx" title="Assessment"  description="Assessment" >
+      <siteMapNode url="stuDoMCQ.aspx" title="Multiple Choice Question"  description="Multiple Choice Question" />
+      <siteMapNode url="stuDoSubQ.aspx" title="Subject Question"  description="Subject Question" />
+    </siteMapNode>
+    <siteMapNode url="stuViewAssess.aspx" title="View Assessment"  description="View Assessment" >
+      <siteMapNode url="stuViewMCQ.aspx" title="MCQ Result"  description="MCQ Result" />
+      <siteMapNode url="stuViewSubQ.aspx" title="Subject Result"  description="Subject Result" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>
