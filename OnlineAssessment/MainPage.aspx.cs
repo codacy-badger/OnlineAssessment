@@ -34,15 +34,15 @@ namespace OnlineAssessment
                 if (checkUser() == 1)
                 {
                     con.Open();
-                    SqlCommand getPsw = new SqlCommand("SELECT psw from Lecture WHERE email = '" + txtEmail.Text + "'", con);
+                    SqlCommand getPsw = new SqlCommand("SELECT psw from Lecture WHERE email = '" + Request.Form["txtEmail"] + "'", con);
                     string psw = getPsw.ExecuteScalar().ToString().Replace(" ", "");
 
                     con.Close();
 
-                    if (psw == txtPassword.Text)
+                    if (psw == Request.Form["txtPassword"])
                     {
                         con.Open();
-                        SqlCommand getName = new SqlCommand("SELECT lecID, lecName, gender from Lecture WHERE email = '" + txtEmail.Text + "'", con);
+                        SqlCommand getName = new SqlCommand("SELECT lecID, lecName, gender from Lecture WHERE email = '" + Request.Form["txtEmail"] + "'", con);
                         string name = "";
                         string gender = "";
                         int lecID = 0;
@@ -62,7 +62,7 @@ namespace OnlineAssessment
                         Session["role"] = "Lecturer";
 
 
-                        Response.Redirect("lecPage.aspx", false);
+                        Response.Redirect("lecWork.aspx", false);
                     }
                     else
                     {
@@ -73,15 +73,15 @@ namespace OnlineAssessment
                 else
                 {
                     con.Open();
-                    SqlCommand getPsw = new SqlCommand("SELECT psw from Student WHERE email = '" + txtEmail.Text.ToUpper() + "'", con);
+                    SqlCommand getPsw = new SqlCommand("SELECT psw from Student WHERE email = '" + Request.Form["txtEmail"].ToUpper() + "'", con);
                     string psw = getPsw.ExecuteScalar().ToString().Replace(" ", "");
                     con.Close();
 
-                    if (psw == txtPassword.Text)
+                    if (psw == Request.Form["txtPassword"])
                     {
 
                         con.Open();
-                        SqlCommand getName = new SqlCommand("SELECT stuID, stuName, gender from Student WHERE email = '" + txtEmail.Text.ToUpper() + "'", con);
+                        SqlCommand getName = new SqlCommand("SELECT stuID, stuName, gender from Student WHERE email = '" + Request.Form["txtEmail"].ToUpper() + "'", con);
                         string name = "";
                         string gender = "";
                         int stuID = 0;
@@ -100,7 +100,7 @@ namespace OnlineAssessment
                         Session["gender"] = gender;
                         Session["role"] = "Student";
 
-                        Response.Redirect("~/stuPage.aspx", false);
+                        Response.Redirect("~/stuDoAssess.aspx", false);
                     }
                     else
                     {
@@ -122,7 +122,7 @@ namespace OnlineAssessment
             DataSet ds;
 
             //Check email from lecturer, return 1 if lecturer
-            query1 = "Select * from Lecture where email = '" + txtEmail.Text.ToUpper() + "'";
+            query1 = "Select * from Lecture where email = '" + Request.Form["txtEmail"].ToUpper() + "'";
             cmd = new SqlCommand(query1, con);
             con.Open();
             da = new SqlDataAdapter();
@@ -137,7 +137,7 @@ namespace OnlineAssessment
             }
 
             //Check email from lecturer, return 2 if student
-            query2 = "Select * from Student where email = '" + txtEmail.Text.ToUpper() + "'";
+            query2 = "Select * from Student where email = '" + Request.Form["txtEmail"].ToUpper() + "'";
             cmd = new SqlCommand(query2, con);
             con.Open();
             da = new SqlDataAdapter();

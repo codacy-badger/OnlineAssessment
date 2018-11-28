@@ -78,6 +78,7 @@
         <ul class="nav menu">
             
             <%
+                
                 if (Session["role"] != null)
                 {
                     string role = Session["role"].ToString();
