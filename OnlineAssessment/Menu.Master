@@ -4,7 +4,6 @@
 
 <html>
 <head runat="server">
-
     <%--<link rel="stylesheet" href="CSS/main.css" />
     <link rel="stylesheet" href="CSS/body.css" />--%>
     <link href="looks/css/bootstrap.min.css" rel="stylesheet">
@@ -75,16 +74,15 @@
             </div>
         </form>
         <nav>
-        <ul class="nav menu">
-            
-            <%
-                
-                if (Session["role"] != null)
-                {
-                    string role = Session["role"].ToString();
-                    if (role == "Lecturer")
+            <ul class="nav menu">
+
+                <%
+                    if (Session["role"] != null)
                     {
-            %>
+                        string role = Session["role"].ToString();
+                        if (role == "Lecturer")
+                        {
+                %>
                 <li id="lecWorkLink" runat="server"><a href="lecWork.aspx"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
                 <li id="lecCreateAssessLink" runat="server"><a href="lecCreateAssess.aspx"><em class="fa fa-calendar">&nbsp;</em> Create</a></li>
                 <li id="lecSubLink" runat="server"><a href="lecSub.aspx"><em class="fa fa-bar-chart">&nbsp;</em> Subjects</a></li>
@@ -96,23 +94,29 @@
                 <li id="stuDoAssessLink" runat="server"><a href="stuDoAssess.aspx"><em class="fa fa-dashboard">&nbsp;</em> Home</a></li>
                 <li id="stuViewAssessLink" runat="server"><a href="stuViewAssess.aspx"><em class="fa fa-calendar">&nbsp;</em> Scores</a></li>
                 <%
+                        }
                     }
-                }
                 %>
-        </ul></nav>
+            </ul>
+        </nav>
     </div>
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-12 col-lg-offset-2 main">
         <%-- Content --%>
         <form runat="server">
             <%-- SiteMapPath & ContentPlaceHolder --%>
-            <div>
+            <div class="row breadcrumb" >
+
                 <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+            </div>
+            <div class="row">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
             <%-- end --%>
-            <div class="footer">
-                <p>© 2018 Online Assessment Site. All Rights Reserved | Design by RSF2G5. <a href="AboutUs.aspx">About us</a></p>
+            <div class="footer row">
+                <p style="text-align: center; position: fixed; left: 5%; bottom: 0; width: 100%;">
+                    © 2018 Online Assessment Site. All Rights Reserved. Know more <a href="AboutUs.aspx">About us</a>.
+                </p>
             </div>
         </form>
     </div>
