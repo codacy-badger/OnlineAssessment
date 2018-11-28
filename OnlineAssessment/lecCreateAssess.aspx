@@ -26,7 +26,7 @@
                         DataSourceID="SqlDataSource1" DataTextField="SubjectList" DataValueField="subjectID" AutoPostBack="true">
                         <asp:ListItem Selected="True" Value="0" Text="--Select A Subject--"></asp:ListItem>
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AssessmentConnectionString %>" SelectCommand="SELECT EL.subjectID, (subjectCode + ' ' + subjectName) AS SubjectList FROM Subject S, EnrollLecturer EL, Lecture L
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT EL.subjectID, (subjectCode + ' ' + subjectName) AS SubjectList FROM Subject S, EnrollLecturer EL, Lecture L
 WHERE S.subjectID = EL.subjectID AND L.lecID = EL.lecID AND EL.lecID = @userID">
                         <SelectParameters>
                             <asp:SessionParameter Name="userID" SessionField="userID" />

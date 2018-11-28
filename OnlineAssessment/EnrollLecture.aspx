@@ -5,7 +5,7 @@
 
     <div>
         <h2>Enroll Subject</h2>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AssessmentConnectionString %>" SelectCommand="SELECT subjectID, (subjectCode + ' ' + subjectName) AS subjectName FROM Subject WHERE subjectID NOT IN 
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT subjectID, (subjectCode + ' ' + subjectName) AS subjectName FROM Subject WHERE subjectID NOT IN 
 (SELECT EL.subjectID FROM Subject S, EnrollLecturer EL, Lecture L WHERE S.subjectID = EL.subjectID AND L.lecID = EL.lecID AND EL.lecID = @lecID)">
             <SelectParameters>
                 <asp:SessionParameter Name="lecID" SessionField="userID" />
