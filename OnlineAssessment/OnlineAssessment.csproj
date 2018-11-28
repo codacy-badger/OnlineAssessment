@@ -72,6 +72,7 @@
     <Content Include="App_Data\MyDatabase_log.ldf">
       <DependentUpon>MyDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="lecturerTreeView.ascx" />
     <Content Include="lecWorkList.aspx" />
     <Content Include="lecWork.aspx" />
     <Content Include="EnrollStudent.aspx" />
@@ -112,6 +113,13 @@
     </Compile>
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lecturerTreeView.ascx.cs">
+      <DependentUpon>lecturerTreeView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lecturerTreeView.ascx.designer.cs">
+      <DependentUpon>lecturerTreeView.ascx</DependentUpon>
     </Compile>
     <Compile Include="lecWorkList.aspx.cs">
       <DependentUpon>lecWorkList.aspx</DependentUpon>

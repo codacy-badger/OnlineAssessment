@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="lecCreateAssess.aspx.cs" Inherits="OnlineAssessment.lecCreateAssess" %>
-
+<%--<%@ Register TagPrefix="LecturerTreeView" TagName="Head" Src="~/lecturerTreeView.ascx" %>--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+<%--    <LecturerTreeView:Head ID="ctrlLecturerTreeView" runat="server" />--%>
     <div>
         <h2>Create Assessment</h2>
         <table class="alt">
