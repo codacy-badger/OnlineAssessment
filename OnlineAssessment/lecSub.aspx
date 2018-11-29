@@ -19,7 +19,7 @@ L.lecID = @lecID">
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater1_ItemCommand">
 
                 <ItemTemplate>
-                    <asp:Table runat="server" class="table table-striped">
+                    <asp:Table runat="server" class="table table-responsive table-hover">
                         <asp:TableRow>
                             <asp:TableCell width="20%" style="text-align:left">
                                 <asp:Label runat="server" ID="lblSubjectCode" Text='<%#Eval("subjectCode")%>'></asp:Label>

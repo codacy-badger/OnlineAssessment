@@ -26,8 +26,8 @@
                         <input name="chkRememberMe" type="checkbox" value="chkRememberMe Me">Remember Me
                     </label>
                 </div>
-                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"  class="btn btn-primary"/>
-                <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click"  class="btn btn-default"/>
+                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"  class="btn btn-primary w3-hover-opacity"/>
+                <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click"  class="btn btn-default w3-hover-opacity"/>
 
             </fieldset>
         <h5><b><span>No account yet ? <a href="Register.aspx">Register</a> here.</span></b></h5>

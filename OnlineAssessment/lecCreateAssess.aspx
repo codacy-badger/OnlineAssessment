@@ -49,9 +49,9 @@ WHERE S.subjectID = EL.subjectID AND L.lecID = EL.lecID AND EL.lecID = @userID">
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" class="btn btn-primary"
+                    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" class="btn btn-primary w3-hover-opacity"
                         OnClientClick="return confirm('Confirm add assessment?');" />
-                    <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default"/>
+                    <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default w3-hover-opacity"/>
                 </td>
             </tr>
         </table>

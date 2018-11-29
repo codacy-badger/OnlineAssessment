@@ -55,8 +55,8 @@
                                 <asp:ListItem Value="Student">Student</asp:ListItem>
                             </asp:RadioButtonList>
                         </div>
-                        <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" class="btn btn-primary" />
-                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default" />
+                        <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" class="btn btn-primary w3-hover-opacity" />
+                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default w3-hover-opacity" />
                     </fieldset>
                     <h5><b><span>Already have an account ? <a href="MainPage.aspx">Login</a>  here.</span></b></h5>
 
