@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-  <siteMapNode url="lecPage.aspx" title="HomePage"  description="HomePage">
+  <siteMapNode url="MainPage.aspx" title="HomePage"  description="HomePage">
     <siteMapNode url="lecSub.aspx" title="Subject"  description="Subject">
       <siteMapNode url="EnrollLecture.aspx" title="Lecturer Enrollment"  description="Lecturer Enrollment" />
       <siteMapNode url="lecSubList.aspx" title="Student Subject List"  description="Student Subject List" >

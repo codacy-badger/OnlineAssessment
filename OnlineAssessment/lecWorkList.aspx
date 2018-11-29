@@ -20,7 +20,7 @@ WHERE SA.stuID = S.stuID AND status = 'progress' AND assessID =@assessID">
 
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater1_ItemCommand">
             <HeaderTemplate>
-                <asp:Table ID="Table1" runat="server">
+                <asp:Table ID="Table1" runat="server" class="table table-striped">
                     <asp:TableHeaderRow>
                         <asp:TableCell Style="width: 10%">No.</asp:TableCell>
                         <asp:TableCell Style="width: 20%">Student ID</asp:TableCell>
@@ -32,7 +32,7 @@ WHERE SA.stuID = S.stuID AND status = 'progress' AND assessID =@assessID">
                 </asp:Table>
             </HeaderTemplate>
             <ItemTemplate>
-                <asp:Table runat="server">
+                <asp:Table runat="server" class="table table-striped">
                     <asp:TableRow>
                         <asp:TableCell Width="10%" Style="text-align: left">
                             <asp:Label ID="Label1" runat="server" Text='<%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>'></asp:Label>
@@ -65,7 +65,7 @@ WHERE SA.stuID = S.stuID AND status = 'done' AND assessID =@assessID">
                 <asp:SessionParameter Name="assessID" SessionField="assessID" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource2" AutoGenerateColumns="False" OnRowDataBound="GridView1_RowDataBound">
+        <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource2" AutoGenerateColumns="False" OnRowDataBound="GridView1_RowDataBound" class="table table-striped">
             <Columns>
                 <asp:TemplateField HeaderText="No">
                     <ItemTemplate>

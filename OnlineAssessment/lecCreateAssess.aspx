@@ -2,9 +2,9 @@
 <%--<%@ Register TagPrefix="LecturerTreeView" TagName="Head" Src="~/lecturerTreeView.ascx" %>--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <%--    <LecturerTreeView:Head ID="ctrlLecturerTreeView" runat="server" />--%>
-    <div>
+    <div style="width: 70%; margin-left: 15%; margin-top: 3%;">
         <h2>Create Assessment</h2>
-        <table class="alt">
+        <table class="table table-striped">
             <tr>
                 <td>Assessment Name:</td>
                 <td>
@@ -49,9 +49,9 @@ WHERE S.subjectID = EL.subjectID AND L.lecID = EL.lecID AND EL.lecID = @userID">
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"
+                    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" class="btn btn-primary"
                         OnClientClick="return confirm('Confirm add assessment?');" />
-                    <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" />
+                    <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default"/>
                 </td>
             </tr>
         </table>
