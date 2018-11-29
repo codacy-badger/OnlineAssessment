@@ -66,7 +66,7 @@ WHERE SA.stuID = S.stuID AND status = 'progress' AND assessID =@assessID">
         </SelectParameters>
     </asp:SqlDataSource>
     <%--IN PROCESS EDITING--%>
-    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource2" OnItemCommand="Repeater2_ItemCommand">
+    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource2">
         <HeaderTemplate>
             <h3>Private Assessment</h3>
             <br />
