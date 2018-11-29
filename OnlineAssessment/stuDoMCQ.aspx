@@ -11,12 +11,12 @@
         <div style="text-align: center; margin-top: 20px">
             <asp:Label ID="lblResult" runat="server" Text="" Font-Bold="true"></asp:Label>
             <br />
-            <asp:Button ID="btnHome" runat="server" Text="Back to HomePage" OnClick="btnHome_Click" />
+            <asp:Button ID="btnHome" runat="server" Text="Back to HomePage" OnClick="btnHome_Click" class="btn-primary w3-animate-opacity"/>
         </div>
         <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate>
                 <div style="padding: 15px">
-                    Question <%# Container.ItemIndex + 1 %>. <%# Eval("questName") %><br />
+                    Question <%# Container.ItemIndex + 1 %>. <%# Eval("questName") %><br /> 
                     <div id="div_A" runat="server">
                         <asp:RadioButton GroupName="a" Text='<%# "A. " + Eval("selectA") %>' runat="server" ID="selectA" />
                     </div>
@@ -34,8 +34,8 @@
             </ItemTemplate>
         </asp:DataList>
         <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"
-            OnClientClick="return confirm('Confirm to submit');" />
-        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" />
+            OnClientClick="return confirm('Confirm to submit');" class="btn-primary w3-animate-opacity"/>
+        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn-default w3-animate-opacity"/>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Question] WHERE ([assessID] = @assessID)">
             <SelectParameters>
                 <asp:SessionParameter Name="assessID" SessionField="assessID" Type="Int32" />

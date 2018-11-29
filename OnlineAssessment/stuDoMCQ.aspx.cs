@@ -42,7 +42,7 @@ namespace OnlineAssessment
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/stuPage.aspx", false);
+            Response.Redirect("~/stuDoAssess.aspx", false);
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

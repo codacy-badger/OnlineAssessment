@@ -9,7 +9,7 @@
             </div>
             <div style="text-align: center; margin-top: 20px">
                 <asp:Label ID="lblResult" runat="server" Text="" Font-Bold="true" ForeColor="YellowGreen"></asp:Label>
-                <br /><asp:Button ID="btnHome" runat="server" Text="Back to HomePage" OnClick="btnHome_Click" />
+                <br /><asp:Button ID="btnHome" runat="server" Text="Back to HomePage" OnClick="btnHome_Click" CssClass="btn-primary w3-hover-opacity"/>
             </div>
             <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
                 <ItemTemplate>
@@ -27,8 +27,8 @@
                 </ItemTemplate>
             </asp:DataList>
             <div style="text-align: right">
-                <asp:Button ID="btnSubmit" runat="server" Text="Sumbit" OnClick="btnSubmit_Click" />
-                <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" />
+                <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"  CssClass="btn-primary w3-hover-opacity"/>
+                <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" CssClass="btn-default w3-hover-opacity"/>
             </div>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Question] WHERE ([assessID] = @assessID)">
                 <SelectParameters>
