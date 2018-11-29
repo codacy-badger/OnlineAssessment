@@ -12,7 +12,7 @@
                     </b>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:Button ID="btnPrevious" runat="server" Text="Back to Previous Page" OnClick="btnPrevious_Click" />
+                    <asp:Button ID="btnPrevious" runat="server" Text="Back to Previous Page" OnClick="btnPrevious_Click" class="btn btn-success w3-hover-opacity" />
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
@@ -48,8 +48,8 @@
         </asp:DataList>
         <div style="text-align: right">
             <asp:Button ID="btnSubmit" runat="server" Text="Done" OnClick="btnSubmit_Click"
-                OnClientClick="return confirm('Done marking?');" />
-            <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" />
+                OnClientClick="return confirm('Done marking?');" class="btn btn-success w3-hover-opacity"/>
+            <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default w3-hover-opacity"/>
         </div>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Q.questName,SA.answer, Q.questID , Q.mark
 FROM StudentAnswer SA, Question Q

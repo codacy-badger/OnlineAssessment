@@ -11,7 +11,7 @@
         <div style="text-align: center; margin-top: 20px">
             <asp:Label ID="lblResult" runat="server" Text="" Font-Bold="true"></asp:Label>
             <br />
-            <asp:Button ID="btnHome" runat="server" Text="Back to HomePage" OnClick="btnHome_Click" class="btn-primary w3-animate-opacity"/>
+            <asp:Button ID="btnHome" runat="server" Text="Back to HomePage" OnClick="btnHome_Click" class="btn btn-primary w3-animate-opacity"/>
         </div>
         <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate>
@@ -34,8 +34,8 @@
             </ItemTemplate>
         </asp:DataList>
         <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"
-            OnClientClick="return confirm('Confirm to submit');" class="btn-primary w3-animate-opacity"/>
-        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn-default w3-animate-opacity"/>
+            OnClientClick="return confirm('Confirm to submit');" class="btn btn-primary w3-animate-opacity"/>
+        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default w3-animate-opacity"/>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Question] WHERE ([assessID] = @assessID)">
             <SelectParameters>
                 <asp:SessionParameter Name="assessID" SessionField="assessID" Type="Int32" />

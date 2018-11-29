@@ -45,8 +45,8 @@ ORDER BY subjectName">
                         <asp:Label runat="server" ID="lblQuestType" Text=' <%#Eval("questType")%>'></asp:Label><br />
                     </td>
                     <td style="text-align: left; width: 13%">
-                        <asp:LinkButton ID="LinkButton1" runat="server" CommandName="view" CommandArgument='<%# Eval("assessID") %>' ForeColor="Green">View</asp:LinkButton>
-                       <br/> <asp:LinkButton ID="LinkButton2" runat="server" OnClientClick="return confirm('Confirm delete?')" CommandName="delete" CommandArgument='<%# Eval("assessID") %>' ForeColor="Green">Delete</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandName="view" CommandArgument='<%# Eval("assessID") %>' class="btn btn-primary w3-hover-shadow">View</asp:LinkButton>
+                       <br/> <asp:LinkButton ID="LinkButton2" runat="server" OnClientClick="return confirm('Confirm delete?')" CommandName="delete" CommandArgument='<%# Eval("assessID") %>' class="btn btn-danger w3-hover-shadow">Delete</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>
@@ -88,8 +88,8 @@ ORDER BY subjectName">
                         <asp:Label runat="server" ID="lblQuestType" Text=' <%#Eval("questType")%>'></asp:Label><br />
                     </td>
                     <td style="text-align: left; width: 20%">
-                        <asp:LinkButton ID="LinkButton3" runat="server" CommandName="view" CommandArgument='<%# Eval("assessID") %>' ForeColor="Green">View</asp:LinkButton>
-                       <br/> <asp:LinkButton ID="LinkButton4" runat="server" OnClientClick="return confirm('Confirm delete?')" CommandName="delete" CommandArgument='<%# Eval("assessID") %>' ForeColor="Green">Delete</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton3" runat="server" CommandName="view" CommandArgument='<%# Eval("assessID") %>' class="btn btn-primary w3-hover-shadow">View </asp:LinkButton>
+                       <br/> <asp:LinkButton ID="LinkButton4" runat="server" OnClientClick="return confirm('Confirm delete?')" CommandName="delete" CommandArgument='<%# Eval("assessID") %>' class="btn btn-danger w3-hover-shadow">Delete</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>
