@@ -14,13 +14,13 @@ ORDER BY subjectName">
         <p>
             <asp:Label ID="lblMsg" runat="server" Text="" Style="color:orange"></asp:Label>
         </p>
-        <h2 style="margin-bottom: 5px; font-size: 30px">All Assessment</h2>
+        <h2 style="margin-bottom: 5px; font-size: 30px">All Assessments</h2>
         
         <br />
         
         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater2_ItemCommand">
             <HeaderTemplate>
-                <h3>Public Assessment</h3>
+                <h3>Public Assessments</h3>
                 <table class="table table-striped table-hover">
                     <tr>
                         <b>
@@ -46,7 +46,7 @@ ORDER BY subjectName">
                     </td>
                     <td style="text-align: left; width: 13%">
                         <asp:LinkButton ID="LinkButton1" runat="server" CommandName="view" CommandArgument='<%# Eval("assessID") %>' class="btn btn-primary w3-hover-shadow">View</asp:LinkButton>
-                       <br/> <asp:LinkButton ID="LinkButton2" runat="server" OnClientClick="return confirm('Confirm delete?')" CommandName="delete" CommandArgument='<%# Eval("assessID") %>' class="btn btn-danger w3-hover-shadow">Delete</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton2" runat="server" OnClientClick="return confirm('Confirm delete?')" CommandName="delete" CommandArgument='<%# Eval("assessID") %>' class="btn btn-danger w3-hover-shadow">Delete</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>
@@ -58,7 +58,7 @@ ORDER BY subjectName">
         
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemCommand="Repeater1_ItemCommand" OnItemDataBound="lists_ItemDataBound">
             <HeaderTemplate>
-                <h3>Private Assessment</h3>
+                <h3>Private Assessments</h3>
                 <table class="table table-striped  table-hover">
                     <tr>
                         <b>
@@ -77,19 +77,19 @@ ORDER BY subjectName">
                     </td>
                     <td style="text-align: left; width: 20%">
                         <asp:Label runat="server" ID="lblAssessType" Text=' <%#Eval("assessType")%>' Visible="false"></asp:Label>
-                        <asp:Label runat="server" ID="lblAssName" Text=' <%#Eval("assessName")%>'></asp:Label><br />
+                        <asp:Label runat="server" ID="lblAssName" Text=' <%#Eval("assessName")%>'></asp:Label>
                     </td>   
                     <td style="text-align: left; width: 20%">
                         <asp:Label runat="server" ID="lblAssID" Text=' <%#Eval("assessID")%>' Visible="false"></asp:Label>
-                        <asp:Label runat="server" ID="lblSubname" Text=' <%#Eval("subjectName")%>'></asp:Label><br />
+                        <asp:Label runat="server" ID="lblSubname" Text=' <%#Eval("subjectName")%>'></asp:Label>
                     </td>
                     
                     <td style="text-align: left; width: 20%">
-                        <asp:Label runat="server" ID="lblQuestType" Text=' <%#Eval("questType")%>'></asp:Label><br />
+                        <asp:Label runat="server" ID="lblQuestType" Text=' <%#Eval("questType")%>'></asp:Label>
                     </td>
                     <td style="text-align: left; width: 20%">
                         <asp:LinkButton ID="LinkButton3" runat="server" CommandName="view" CommandArgument='<%# Eval("assessID") %>' class="btn btn-primary w3-hover-shadow">View </asp:LinkButton>
-                       <br/> <asp:LinkButton ID="LinkButton4" runat="server" OnClientClick="return confirm('Confirm delete?')" CommandName="delete" CommandArgument='<%# Eval("assessID") %>' class="btn btn-danger w3-hover-shadow">Delete</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton4" runat="server" OnClientClick="return confirm('Confirm delete?')" CommandName="delete" CommandArgument='<%# Eval("assessID") %>' class="btn btn-danger w3-hover-shadow">Delete</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>
