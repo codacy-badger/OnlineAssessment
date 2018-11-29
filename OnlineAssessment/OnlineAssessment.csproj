@@ -66,9 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
-    <Content Include="App_Data\MyDatabase.mdf" />
-    <Content Include="App_Data\MyDatabase_log.ldf">
-      <DependentUpon>MyDatabase.mdf</DependentUpon>
+    <Content Include="App_Data\Assessment.mdf" />
+    <Content Include="App_Data\Assessment_log.ldf">
+      <DependentUpon>Assessment.mdf</DependentUpon>
     </Content>
     <Content Include="lecturerTreeView.ascx" />
     <Content Include="lecWorkList.aspx" />
