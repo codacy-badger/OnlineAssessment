@@ -91,7 +91,6 @@
     <Content Include="lecWorkMark.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="stuDoAssess.aspx" />
-    <Content Include="stuPage.aspx" />
     <Content Include="stuViewAssess.aspx" />
     <Content Include="stuDoMCQ.aspx" />
     <Content Include="stuDoSubQ.aspx" />
@@ -205,13 +204,6 @@
     </Compile>
     <Compile Include="stuDoAssess.aspx.designer.cs">
       <DependentUpon>stuDoAssess.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="stuPage.aspx.cs">
-      <DependentUpon>stuPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="stuPage.aspx.designer.cs">
-      <DependentUpon>stuPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="stuViewAssess.aspx.cs">
       <DependentUpon>stuViewAssess.aspx</DependentUpon>
