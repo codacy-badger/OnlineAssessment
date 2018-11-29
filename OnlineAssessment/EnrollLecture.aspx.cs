@@ -38,7 +38,8 @@ namespace OnlineAssessment
             cmd.Parameters.Clear();
             con.Close();
 
-            Response.Redirect("EnrollLecture.aspx?enroll=" + ddlSubjectEnroll.SelectedItem.Text, false);
+            //            Response.Redirect("EnrollLecture.aspx?enroll=" + ddlSubjectEnroll.SelectedItem.Text, false);
+            Response.Redirect("~/lecSub.aspx");
 
         }
 

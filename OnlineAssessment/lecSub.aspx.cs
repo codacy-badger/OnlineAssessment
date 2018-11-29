@@ -9,7 +9,18 @@ namespace OnlineAssessment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["delete"] != null)
+                {
+                    lblMsg.Text = "Unenrolled.";
+                }
+            }
+        }
+        override protected void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            Repeater1.ItemCommand += new RepeaterCommandEventHandler(Repeater1_ItemCommand);
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -24,9 +35,8 @@ namespace OnlineAssessment
             Session["subjectCode"] = subjectCode.Text;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
-
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * FROM Subject WHERE subjectCode= '" + Session["subjectCode"].ToString() + "'", con);
+            SqlCommand cmd = new SqlCommand("select * FROM Subject WHERE subjectCode= '" + Session["subjectCode"] + "'", con);
             using (SqlDataReader rdr = cmd.ExecuteReader())
             {
                 if (rdr.Read())
@@ -39,7 +49,23 @@ namespace OnlineAssessment
             }
             con.Close();
 
-            Response.Redirect("~/lecSubList.aspx");
+            if (e.CommandName.Equals("view"))
+            {
+                
+                Response.Redirect("~/lecSubList.aspx");
+            }
+            else if (e.CommandName.Equals("unenroll"))
+            {
+                SqlCommand cmd2 = new SqlCommand("delete FROM EnrollLecturer WHERE lecID = " + Int16.Parse(Session["userID"].ToString()) + " AND subjectID = " + Int16.Parse(Session["subjectID"].ToString()), con);
+
+                con.Open();
+                cmd2.ExecuteNonQuery();
+                con.Close();
+
+                Response.Redirect("lecSub.aspx?delete=" + subjectCode, false);
+            }
+
+
         }
 
     }
