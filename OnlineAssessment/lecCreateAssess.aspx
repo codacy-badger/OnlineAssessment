@@ -2,21 +2,21 @@
 <%--<%@ Register TagPrefix="LecturerTreeView" TagName="Head" Src="~/lecturerTreeView.ascx" %>--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <%--    <LecturerTreeView:Head ID="ctrlLecturerTreeView" runat="server" />--%>
-    <div style="width: 70%; margin-left: 15%; margin-top: 3%;">
+    <div style="width: 70%; margin-left: 15%; margin-top: 5%;">
         <h2>Create Assessment</h2>
         <table class="table table-striped">
             <tr>
-                <td>Assessment Name:</td>
+                <td style =" width: 30%">Assessment Name:</td>
                 <td>
                     <asp:TextBox ID="txtName" runat="server" MaxLength="100"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style3">Assessment Type
+                <td class="auto-style3">AsseAssessment Type
                 </td>
                 <td class="auto-style3">
 
-                    <asp:RadioButtonList ID="rblAssessType" runat="server" AutoPostBack="true">
+                    <asp:RadioButtonList ID="rblAssessType" runat="server" AutoPostBack="True">
                         <asp:ListItem Value="Public" Text="Public"></asp:ListItem>
                         <asp:ListItem Value="Private" Text="Private"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -37,7 +37,7 @@ WHERE S.subjectID = EL.subjectID AND L.lecID = EL.lecID AND EL.lecID = @userID">
             </tr>
             <tr>
                 <td class="auto-style4">Question Type
-                </td>
+                >
                 <td class="auto-style4">
                     <asp:RadioButtonList ID="rblQuestType" runat="server">
                         <asp:ListItem Value="MCQ">MCQ</asp:ListItem>
