@@ -58,7 +58,7 @@
                         <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" class="btn btn-primary" />
                         <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default" />
                     </fieldset>
-                    <h5><b><span>Already have an account ?Please[ <a href="MainPage.aspx">Login</a> ].</span></b></h5>
+                    <h5><b><span>Already have an account ? <a href="MainPage.aspx">Login</a>  here.</span></b></h5>
 
                     <asp:Label ID="lblErrorMsg" runat="server" Text="" Visible="false" ForeColor="Red"></asp:Label>
 
