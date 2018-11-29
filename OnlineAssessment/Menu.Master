@@ -61,28 +61,34 @@
     <%
         if (Session["role"] != null)
         {
+            %>
+                  
+        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <div class="profile-sidebar">
+        <div class="profile-userpic">
+        <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+        </div>
+        <div class="profile-usertitle">
+        <div class="profile-usertitle-name">Username</div>
+        <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <form role="search">
+        <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+        </div>
+        </form>
+            <ul class="nav menu">
+
+
+
+                  <%
             string role = Session["role"].ToString();
             if (role == "Lecturer")
             {
     %>
-    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-        <div class="profile-sidebar">
-            <div class="profile-userpic">
-                <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
-            </div>
-            <div class="profile-usertitle">
-                <div class="profile-usertitle-name">Username</div>
-                <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <div class="divider"></div>
-        <form role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-        </form>
-        <ul class="nav menu">
             <li id="lecWorkLink" runat="server"><a href="lecWork.aspx"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
             <li id="lecCreateAssessLink" runat="server"><a href="lecCreateAssess.aspx"><em class="fa fa-calendar">&nbsp;</em> Create</a></li>
             <li id="lecSubLink" runat="server"><a href="lecSub.aspx"><em class="fa fa-bar-chart">&nbsp;</em> Subjects</a></li>
@@ -93,11 +99,11 @@
             %>
             <li id="stuDoAssessLink" runat="server"><a href="stuDoAssess.aspx"><em class="fa fa-dashboard">&nbsp;</em> Home</a></li>
             <li id="stuViewAssessLink" runat="server"><a href="stuViewAssess.aspx"><em class="fa fa-calendar">&nbsp;</em> Scores</a></li>
-        </ul>
         <%
                 }
             }
         %>
+            </ul>
     </div>
     <%
         if (Session["role"] != null)
