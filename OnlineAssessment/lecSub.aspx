@@ -28,7 +28,7 @@ L.lecID = @lecID">
                                 <asp:Label runat="server" ID="lblSubjectName" Text=' <%#Eval("subjectName")%>'></asp:Label><br />
                             </asp:TableCell>
                             <asp:TableCell width="10%" style="text-align:left">
-                                <asp:LinkButton ID="LinkButton1" runat="server" >View</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-primary w3-hover-shadow">View</asp:LinkButton>
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>

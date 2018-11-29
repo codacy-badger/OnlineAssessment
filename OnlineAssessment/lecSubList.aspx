@@ -17,7 +17,7 @@
         <br />
         <asp:Label ID="lblSubjectInfo" runat="server" Text=""></asp:Label>
         <br />
-        <span style="float: right">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnEnrollStudent" runat="server" Text="Enroll New Student" OnClick="btnEnrollStudent_Click" class="btn-primary btn-warning w3-hover-opacity"/></span>
+        <span style="float: right">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnEnrollStudent" runat="server" Text="Enroll New Student" OnClick="btnEnrollStudent_Click" class="btn btn-primary btn-warning w3-hover-shadow"/></span>
     </div>
     <br />
     <br />
@@ -56,7 +56,7 @@
                     </asp:TableCell>
                     <asp:TableCell Width="9%" Style="text-align: left">
                         <asp:LinkButton ID="LinkButton1" runat="server"
-                            OnClientClick="return confirm('Confirm kick?')" OnClick="LinkButton1_Click">Kick</asp:LinkButton>
+                            OnClientClick="return confirm('Confirm kick?')" OnClick="LinkButton1_Click" class="btn btn-danger w3-animate-opacity">Kick</asp:LinkButton>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>

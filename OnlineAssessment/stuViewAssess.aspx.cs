@@ -85,7 +85,6 @@ namespace OnlineAssessment
                 }
                 else if (status.Text.Replace(" ", "") == "done")
                 {
-                    status.ForeColor = System.Drawing.Color.Green;
                     status.Text = "View";
                 }
 
@@ -165,7 +164,6 @@ namespace OnlineAssessment
                 }
                 else if (status.Text.Replace(" ", "") == "done")
                 {
-                    status.ForeColor = System.Drawing.Color.Green;
                     status.Text = "View";
                 }
 
