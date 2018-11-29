@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace OnlineAssessment
@@ -8,6 +10,13 @@ namespace OnlineAssessment
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["delete"] != null)
+                {
+                    lblMsg.Text = "Assessment has been deleted.";
+                }
+            }
         }
 
         protected void lists_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -27,7 +36,23 @@ namespace OnlineAssessment
             Session["assessType"] = assessType.Text;
             Session["assessName"] = assessName.Text;
             Session["questType"] = questType.Text;
-            Response.Redirect("~/lecWorkList.aspx");
+
+            if (e.CommandName.Equals("view"))
+            {
+                Response.Redirect("~/lecWorkList.aspx");
+            }
+            else if (e.CommandName.Equals("delete"))
+            {
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+                SqlCommand cmd = new SqlCommand("delete FROM Assessment WHERE assessID = '" + assessID.Text + "'", con);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                Response.Redirect("lecWork.aspx?delete=" + assessID, false);
+            }
         }
         protected void Repeater2_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
@@ -40,7 +65,29 @@ namespace OnlineAssessment
             Session["assessType"] = assessType.Text;
             Session["assessName"] = assessName.Text;
             Session["questType"] = questType.Text;
-            Response.Redirect("~/lecWorkList.aspx");
+
+            if (e.CommandName.Equals("view"))
+            {
+                Response.Redirect("~/lecWorkList.aspx");
+            }
+            else if (e.CommandName.Equals("delete"))
+            {
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+                SqlCommand cmd = new SqlCommand("delete FROM Assessment WHERE assessID = '" + assessID.Text + "'", con);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                Response.Redirect("lecWork.aspx?delete=" + assessID, false);
+            }
+        }
+
+        override protected void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            Repeater2.ItemCommand += new RepeaterCommandEventHandler(Repeater2_ItemCommand);
         }
     }
 }
