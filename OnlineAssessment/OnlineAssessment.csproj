@@ -280,8 +280,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="webLec.sitemap" />
-    <Content Include="webStu.sitemap" />
+    <Content Include="assessment.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
