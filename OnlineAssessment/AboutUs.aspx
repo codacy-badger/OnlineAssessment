@@ -11,16 +11,15 @@
         <br />
         <br />
         <p style="text-align: center">
-            The purpose of this website is to provide a platform for the lecturers to post assessments and students to answer the assessments.<br />
-            The users are required to register their account by providing their name and email to register as a member.<br />
-            This website is completely free-to-use and is still under development.<br />
-            Please contact us if you found any bugs or problems ! (E-mail : chuakh-pa16@student.tarc.edu.my)
+            Building a website is, in many ways, an exercise of willpower. It’s tempting to get distracted by the bells and whistles of the design process, and forget all about 
+            creating compelling content. It's that compelling content that's crucial to making inbound designing for student to achieve their online assessment.<br/>
+            
         </p>
         <br />
         <br />
         <br />
         <hr />
-        <p style="text-align: center">This website is created by Mr.Chua Kah How, Mr.Chok Kah Yang, Mr.Yeok Jia Ying and Mr.Edmund for education purpose.</p>
+        <p style="text-align: center">Web created by Mr. Soo Leong Guan, Mr. Ong Tun Ying, Mr. Ong Jon Shen and Mr. Poh Yong Hua for education purpose.</p>
     </div>
 
 </asp:Content>
