@@ -24,7 +24,7 @@
         <br />
         <br />
         <hr />
-        <p style="text-align: center">Web created by Mr. Soo Leong Guan, Mr. Ong Tun Ying, Mr. Ong Jon Shen and Mr. Poh Yong Hua for education purpose.</p>
+        <p style="text-align: center">Website created by Mr. Soo Leong Guan, Mr. Ong Tun Ying, Mr. Ong Jon Shen and Mr. Poh Yong Hua for education purpose.</p>
     </div>
 
 </asp:Content>

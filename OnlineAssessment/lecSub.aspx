@@ -5,7 +5,7 @@
 
         <div class="col-lg-10">
             <h2>Subjects</h2>
-            <a href="EnrollLecture.aspx"><asp:LinkButton ID="LinkButton3" class="btn btn-primary w3-hover-shadow">Enroll</asp:LinkButton></a>
+            <a href="EnrollLecture.aspx"><asp:LinkButton ID="LinkButton3" class="btn btn-success w3-hover-shadow">Enroll</asp:LinkButton></a>
             <br /><br />
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [subjectCode], [subjectName] 
 FROM Lecture L, EnrollLecturer EL, Subject S
@@ -28,7 +28,7 @@ L.lecID = @lecID">
                                 <asp:Label runat="server" ID="lblSubjectName" Text=' <%#Eval("subjectName")%>'></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell width="10%" style="text-align:left;">
-                                <asp:LinkButton ID="LinkButton1" runat="server" CommandName="view" class="btn btn-primary w3-hover-shadow">View</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CommandName="view" class="btn btn-primary w3-hover-shadow">View</asp:LinkButton>&nbsp;
                                 <asp:LinkButton ID="LinkButton2" runat="server" OnClientClick="return confirm('Confirm unenroll?')" CommandName="unenroll" class="btn btn-danger w3-hover-shadow">Unenroll</asp:LinkButton>
                             </asp:TableCell>
                         </asp:TableRow>
