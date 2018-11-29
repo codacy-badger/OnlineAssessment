@@ -29,6 +29,11 @@ namespace OnlineAssessment
             {
                 stuViewAssessLink.Attributes.Add("class", "active");
             }
+            else if (activepage.Contains("AboutUs.aspx"))
+            {
+                stuAboutUsLink.Attributes.Add("class", "active");
+                lecAboutUsLink.Attributes.Add("class", "active");
+            }
         }
 
     }

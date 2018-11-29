@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <div>
+        <div class="col-lg-10">
             <h2>Subject Lists</h2>
             <b><span style="float: left">Select a subject to view</span><span style="float: right">Cant find your subject? <a href="EnrollLecture.aspx">Enroll</a> here.</span></b><br />
             <br />
@@ -19,7 +19,7 @@ L.lecID = @lecID">
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater1_ItemCommand">
 
                 <ItemTemplate>
-                    <asp:Table runat="server">
+                    <asp:Table runat="server" class="table table-striped">
                         <asp:TableRow>
                             <asp:TableCell width="20%" style="text-align:left">
                                 <asp:Label runat="server" ID="lblSubjectCode" Text='<%#Eval("subjectCode")%>'></asp:Label>

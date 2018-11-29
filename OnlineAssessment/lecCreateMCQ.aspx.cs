@@ -60,7 +60,7 @@ namespace OnlineAssessment
 
         protected void btnFinish_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/lecPage.aspx");
+            Response.Redirect("~/lecWork.aspx");
         }
 
         protected void btnAddMore_Click(object sender, EventArgs e)

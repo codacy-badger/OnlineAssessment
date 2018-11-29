@@ -82,6 +82,7 @@ ORDER BY subjectName">
                     </td>
                     <td style="text-align: left; width: 9%">
                         <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="Green">View</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton2" runat="server" ForeColor="Green">Delete</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>

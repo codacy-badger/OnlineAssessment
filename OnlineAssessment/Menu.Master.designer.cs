@@ -40,6 +40,15 @@ namespace OnlineAssessment {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lecSubLink;
         
         /// <summary>
+        /// lecAboutUsLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lecAboutUsLink;
+        
+        /// <summary>
         /// stuDoAssessLink control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace OnlineAssessment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl stuViewAssessLink;
+        
+        /// <summary>
+        /// stuAboutUsLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stuAboutUsLink;
         
         /// <summary>
         /// SiteMapPath1 control.

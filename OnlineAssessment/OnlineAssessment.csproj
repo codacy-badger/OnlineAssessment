@@ -87,7 +87,6 @@
     <Content Include="Images\MarkAssess.png" />
     <Content Include="Images\StudAssess.png" />
     <Content Include="Images\Subjuct.png" />
-    <Content Include="lecPage.aspx" />
     <Content Include="MainPage.aspx" />
     <Content Include="lecWorkMark.aspx" />
     <Content Include="Register.aspx" />
@@ -170,13 +169,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="lecPage.aspx.cs">
-      <DependentUpon>lecPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="lecPage.aspx.designer.cs">
-      <DependentUpon>lecPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage.aspx.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
