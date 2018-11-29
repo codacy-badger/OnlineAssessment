@@ -21,15 +21,15 @@ L.lecID = @lecID">
                 <ItemTemplate>
                     <asp:Table runat="server" class="table table-responsive table-hover">
                         <asp:TableRow>
-                            <asp:TableCell width="20%" style="text-align:left">
+                            <asp:TableCell width="15%" style="text-align:left">
                                 <asp:Label runat="server" ID="lblSubjectCode" Text='<%#Eval("subjectCode")%>'></asp:Label>
                             </asp:TableCell>
-                            <asp:TableCell width="70%" style="text-align:left">
-                                <asp:Label runat="server" ID="lblSubjectName" Text=' <%#Eval("subjectName")%>'></asp:Label><br />
+                            <asp:TableCell width="37%" style="text-align:left">
+                                <asp:Label runat="server" ID="lblSubjectName" Text=' <%#Eval("subjectName")%>'></asp:Label>
                             </asp:TableCell>
-                            <asp:TableCell width="10%" style="text-align:left">
+                            <asp:TableCell width="10%" style="text-align:left;">
                                 <asp:LinkButton ID="LinkButton1" runat="server" CommandName="view" class="btn btn-primary w3-hover-shadow">View</asp:LinkButton>
-                                <asp:LinkButton ID="LinkButton2" runat="server" OnClientClick="return confirm('Confirm unenroll?')" CommandName="unenroll" class="btn btn-primary w3-hover-shadow">Unenroll</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton2" runat="server" OnClientClick="return confirm('Confirm unenroll?')" CommandName="unenroll" class="btn btn-danger w3-hover-shadow">Unenroll</asp:LinkButton>
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
