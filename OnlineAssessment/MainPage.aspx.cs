@@ -28,7 +28,7 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
 
             if (checkUser() == 0)
-                Response.Write("<script>alert('User not EXIST');</script>");
+                Response.Write("<script>alert('This is not a registered email!');</script>");
             else
             {
                 if (checkUser() == 1)

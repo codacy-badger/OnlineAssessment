@@ -7,7 +7,7 @@
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater1_ItemCommand">
                 <ItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server">
-                        <asp:Table runat="server">
+                        <asp:Table runat="server" class="table table-responsive table-hover">
                             <asp:TableRow>
                                 <asp:TableCell>
                                     <div style="color: blue">
@@ -37,7 +37,7 @@
             <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource2" OnItemCommand="Repeater1_ItemCommand">
                 <ItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server" >
-                        <asp:Table runat="server">
+                        <asp:Table runat="server" class="table table-responsive  table-hover">
                             <asp:TableRow>
                                 <asp:TableCell>
                                     <div style="color: blue">
