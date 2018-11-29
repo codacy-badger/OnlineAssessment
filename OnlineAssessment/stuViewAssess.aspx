@@ -40,8 +40,8 @@
                         <asp:Label ID="grade" runat="server" Text=""></asp:Label></td>
 
                     <td>
-                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="select_Click">
-                            <asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'></asp:Label>
+                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="select_Click" >
+                            <asp:Label ID="status" runat="server" Text='<%# Eval("status") %>' class="btn btn-primary w3-hover-opacity"></asp:Label>
                         </asp:LinkButton>
                     </td>
                 </tr>
@@ -84,7 +84,7 @@
                         <asp:Label ID="grade2" runat="server" Text=""></asp:Label></td>
 
                     <td>
-                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="select_Click">
+                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="select_Click" class="btn btn-primary w3-hover-opacity">
                             <asp:Label ID="status2" runat="server" Text='<%# Eval("status") %>'></asp:Label>
                         </asp:LinkButton>
                     </td>

@@ -21,8 +21,8 @@
 
                     <span style="float: right">
                         <asp:Button ID="btnEnroll" runat="server" Text="Enroll"
-                            OnClientClick="return confirm('Add this student?');" OnClick="btnEnroll_Click" class="btn-primary w3-animate-opacity"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:Button ID="btnBackAction" runat="server" Text="Back" OnClick="btnBackAction_Click" class="btn-default w3-animate-opacity"/></span>
+                            OnClientClick="return confirm('Add this student?');" OnClick="btnEnroll_Click" class="btn btn-primary w3-animate-opacity"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btnBackAction" runat="server" Text="Back" OnClick="btnBackAction_Click" class="btn btn-default w3-animate-opacity"/></span>
                     <br />
                     <p>
                         <asp:Label ID="lblMsg" runat="server" Text="" Style="color: green"></asp:Label>

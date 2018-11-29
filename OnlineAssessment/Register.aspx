@@ -38,19 +38,19 @@
                         <div class="form-group">
                             <p>Gender:</p>
                         </div>
-                        <div class="form-group">
-
-                            <asp:RadioButtonList ID="rblGender" CssClass="radioButtonList" runat="server"   RepeatLayout="Flow">
-                                <asp:ListItem Value="MALE" Selected="True">Male</asp:ListItem>
-                                <asp:ListItem Value="FEMALE">Female</asp:ListItem>
-                            </asp:RadioButtonList>
-
+                        <div class="form-group radioButtonList">
+                            <div>
+                                <asp:RadioButtonList ID="rblGender" CssClass="radioButtonList" runat="server" RepeatLayout="Flow">
+                                    <asp:ListItem Value="MALE" Selected="True">Male</asp:ListItem>
+                                    <asp:ListItem Value="FEMALE">Female</asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
                         </div>
                         <div class="form-group">
                             <p>Role:</p>
                         </div>
                         <div class="form-group">
-                            <asp:RadioButtonList ID="rblRole" CssClass="radioButtonList" runat="server"  RepeatLayout="Flow" >
+                            <asp:RadioButtonList ID="rblRole" CssClass="radioButtonList" runat="server" RepeatLayout="Flow">
                                 <asp:ListItem Value="Lecturer" Selected="True">Lecturer</asp:ListItem>
                                 <asp:ListItem Value="Student">Student</asp:ListItem>
                             </asp:RadioButtonList>
@@ -69,7 +69,7 @@
         <!-- /.col-->
     </div>
     <!-- /.row -->
- 
+
 
 </asp:Content>
 

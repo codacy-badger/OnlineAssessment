@@ -47,7 +47,7 @@ WHERE SA.stuID = S.stuID AND status = 'progress' AND assessID =@assessID">
                         <asp:Label runat="server" ID="lblEmail" Text='<%#Eval("email")%>'></asp:Label><br />
                     </asp:TableCell>
                     <asp:TableCell Width="9%" Style="text-align: left">
-                        <asp:LinkButton ID="LinkButton1" runat="server">Mark</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-primary w3-hover-opacity">Mark</asp:LinkButton>
                         <asp:Label runat="server" ID="stuAssessID" Text='<%#Eval("stuAssessID")%>' Visible="false"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>

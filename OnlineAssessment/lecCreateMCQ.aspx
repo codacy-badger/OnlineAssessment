@@ -59,14 +59,14 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <asp:Button ID="btnAdd" runat="server" Text="Add more question" OnClick="btnAdd_Click" />
+                                        <asp:Button ID="btnAdd" runat="server" Text="Add more question" OnClick="btnAdd_Click" class="btn btn-primary w3-animate-opacity"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" /></td>
+                                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click"  class="btn btn-default w3-animate-opacity"/></td>
                                     <td>
-                                        <asp:Button ID="btnDone" runat="server" Text="Done" OnClick="btnDone_Click" /></td>
+                                        <asp:Button ID="btnDone" runat="server" Text="Done" OnClick="btnDone_Click" class="btn btn-success w3-animate-opacity"/></td>
                                 </tr>
                             </table>
                         </asp:View>
@@ -99,10 +99,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="Edit" runat="server" CommandName="edit" Text="Edit" /></td>
+                                                <asp:Button ID="Edit" runat="server" CommandName="edit" Text="Edit" class="btn btn-primary w3-animate-opacity"/></td>
                                             <td>
                                                 <asp:Button ID="Delete" runat="server" CommandName="delete" Text="Delete"
-                                                    OnClientClick="return confirm('Delete this Item');" /></td>
+                                                    OnClientClick="return confirm('Delete this Item');" class="btn btn-danger w3-animate-opacity"/></td>
                                         </tr>
                                     </table>
                                 </ItemTemplate>
@@ -148,10 +148,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="Update" runat="server" CommandName="update" Text="Update" />
+                                                <asp:Button ID="Update" runat="server" CommandName="update" Text="Update" class="btn btn-primary w3-animate-opacity"/>
                                             </td>
                                             <td>
-                                                <asp:Button ID="Cancel" runat="server" CommandName="cancel" Text="Cancel" />
+                                                <asp:Button ID="Cancel" runat="server" CommandName="cancel" Text="Cancel" class="btn btn-default w3-animate-opacity"/>
                                             </td>
                                         </tr>
                                     </table>
@@ -172,8 +172,8 @@
             <tr>
                 <td colspan="2">
                     <asp:Button ID="btnFinish" runat="server" Text="Finish" OnClick="btnFinish_Click" Visible="false"
-                        OnClientClick="return confirm('Finish adding question?');" />
-                    <asp:Button ID="btnAddMore" runat="server" Text="Add more" Visible="false" OnClick="btnAddMore_Click" />
+                        OnClientClick="return confirm('Finish adding question?');" class="btn btn-success w3-animate-opacity"/>
+                    <asp:Button ID="btnAddMore" runat="server" Text="Add more" Visible="false" OnClick="btnAddMore_Click" class="btn btn-primary w3-animate-opacity"/>
                 </td>
 
             </tr>
