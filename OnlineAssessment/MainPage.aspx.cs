@@ -27,11 +27,11 @@ namespace OnlineAssessment
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
 
-            if (checkUser() == 0)
+            if (validateLogin() == 0)
                 Response.Write("<script>alert('This is not a registered email!');</script>");
             else
             {
-                if (checkUser() == 1)
+                if (validateLogin() == 1) // lecturer
                 {
                     con.Open();
                     SqlCommand getPsw = new SqlCommand("SELECT psw from Lecture WHERE email = '" + Request.Form["txtEmail"] + "'", con);
@@ -70,7 +70,7 @@ namespace OnlineAssessment
                         lblErrorMsg.Text = "Wrong Password / Email Entered";
                     }
                 }
-                else
+                else // student
                 {
                     con.Open();
                     SqlCommand getPsw = new SqlCommand("SELECT psw from Student WHERE email = '" + Request.Form["txtEmail"].ToUpper() + "'", con);
@@ -112,8 +112,12 @@ namespace OnlineAssessment
             }
         }
 
-        private int checkUser()
+        private int validateLogin()
         {
+            if (Request.Form["txtEmail"].ToUpper().Equals("") || Request.Form["txtPassword"].ToUpper().Equals(""))
+            {
+                return 0;
+            }
             string query1, query2;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
