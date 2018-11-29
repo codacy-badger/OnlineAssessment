@@ -4,9 +4,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
         <div class="col-lg-10">
-            <h2>Subject Lists</h2>
-            <b><span style="float: left">Select a subject to view</span><span style="float: right">Cant find your subject? <a href="EnrollLecture.aspx">Enroll</a> here.</span></b><br />
-            <br />
+            <h2>Subjects</h2>
+            <a href="EnrollLecture.aspx"><asp:LinkButton ID="LinkButton3" class="btn btn-primary w3-hover-shadow">Enroll</asp:LinkButton></a>
+            <br /><br />
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [subjectCode], [subjectName] 
 FROM Lecture L, EnrollLecturer EL, Subject S
 WHERE L.lecID = EL.lecID AND EL.subjectID = S.subjectID AND

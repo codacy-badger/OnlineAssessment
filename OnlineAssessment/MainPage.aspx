@@ -30,7 +30,7 @@
                 <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click"  class="btn btn-default w3-hover-opacity"/>
 
             </fieldset>
-        <h5><b><span>No account yet ? <a href="Register.aspx">Register</a> here.</span></b></h5>
+        <h5><b><span><a href="Register.aspx">Register</a> here!</span></b></h5>
         <asp:Label ID="lblErrorMsg" runat="server" Text="" Visible="false" ForeColor="Red"></asp:Label>
         
 

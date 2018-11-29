@@ -20,7 +20,7 @@ ORDER BY subjectName">
         
         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater2_ItemCommand">
             <HeaderTemplate>
-                <h3>Public Assessments</h3>
+                <h3>Public</h3>
                 <table class="table table-striped table-hover">
                     <tr>
                         <b>
@@ -58,7 +58,7 @@ ORDER BY subjectName">
         
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemCommand="Repeater1_ItemCommand" OnItemDataBound="lists_ItemDataBound">
             <HeaderTemplate>
-                <h3>Private Assessments</h3>
+                <h3>Private</h3>
                 <table class="table table-striped  table-hover">
                     <tr>
                         <b>

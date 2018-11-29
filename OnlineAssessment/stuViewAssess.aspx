@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 
     <div style="width: 70%; margin-left: 15%; margin-top: 3%;">
-        <h2 style="margin-bottom: 5px; font-size: 30px">All Assessment Mark</h2>
+        <h2 style="margin-bottom: 5px; font-size: 30px">All Assessment Marks</h2>
 
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater1_ItemCommand" OnItemDataBound="lists_ItemDataBound1">
             <HeaderTemplate>
