@@ -13,11 +13,11 @@
             </div>
             <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
                 <ItemTemplate>
-                    <div style="padding: 15px">
+                    <div style="padding: 15px"  >
                         Question <%# Container.ItemIndex + 1 %>. <%# Eval("questName") %>
                         <asp:Label ID="questID" runat="server" Text='<%#Eval("questID")%>' Visible="false"></asp:Label><br />
                         <div style="padding: 15px">
-                            <asp:TextBox ID="subAns" runat="server" Height="200px" TextMode="MultiLine" Style="resize: none"></asp:TextBox>
+                            <asp:TextBox ID="subAns" runat="server" Height="200px" TextMode="MultiLine" Style="resize: none" Width="522px"></asp:TextBox>
                         </div>
                         <div style="text-align: right">
                             Total Marks :

@@ -25,7 +25,7 @@
                                     <div style="text-align: right; padding-right: 20px; color: blue">
                                         
                                         <asp:Label ID="assessID" runat="server" Text='<%#Eval("assessID")%>' Visible="false"></asp:Label>
-                                        <asp:Label ID="lecName" runat="server" Text='<%#Eval("lecName")%>' Visible="false"></asp:Label>
+                                       by: <asp:Label ID="lecName" runat="server" Text='<%#Eval("lecName")%>' ></asp:Label>
                                     </div>
                                 </asp:TableCell>
                             </asp:TableRow>
@@ -50,7 +50,7 @@
                                 <asp:TableCell>
                                     <div style="text-align: right; padding-right: 20px;">
                                         <asp:Label ID="assessID" runat="server" Text='<%#Eval("assessID")%>' Visible="false"></asp:Label>
-                                        <asp:Label ID="lecName" runat="server" Text='<%#Eval("lecName")%>' Visible="false"></asp:Label>
+                                        by: <asp:Label ID="lecName" runat="server" Text=' <%#Eval("lecName")%>' ></asp:Label>
                                     </div>
                                     
                                 </asp:TableCell>
