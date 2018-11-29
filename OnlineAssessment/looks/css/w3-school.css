@@ -134,3 +134,7 @@
             .w3-animate-input:focus {
                 width: 100% !important
             }
+
+.w3-hover-shadow:hover{box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)}
+.w3-hover-greyscale:hover,.w3-hover-grayscale:hover{filter:grayscale(100%)}
+.w3-hover-sepia:hover{filter:sepia(100%)}.w3-sepia-min{filter:sepia(50%)}

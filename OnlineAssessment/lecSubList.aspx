@@ -17,7 +17,7 @@
         <br />
         <asp:Label ID="lblSubjectInfo" runat="server" Text=""></asp:Label>
         <br />
-        <span style="float: right">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnEnrollStudent" runat="server" Text="Enroll New Student" OnClick="btnEnrollStudent_Click" /></span>
+        <span style="float: right">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnEnrollStudent" runat="server" Text="Enroll New Student" OnClick="btnEnrollStudent_Click" class="btn-primary btn-warning w3-hover-opacity"/></span>
     </div>
     <br />
     <br />
@@ -29,7 +29,7 @@
     <br />
     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource2" OnItemCommand="Repeater2_ItemCommand">
         <HeaderTemplate>
-            <asp:Table ID="Table1" runat="server">
+            <asp:Table ID="Table1" runat="server"  class="table table-responsive table-hover">
                 <asp:TableHeaderRow>
                     <asp:TableCell Style="width: 10%">ID</asp:TableCell>
                     <asp:TableCell Style="width: 20%">Student ID</asp:TableCell>
@@ -40,7 +40,7 @@
             </asp:Table>
         </HeaderTemplate>
         <ItemTemplate>
-            <asp:Table runat="server">
+            <asp:Table runat="server"  class="table table-responsive table-hover">
                 <asp:TableRow>
                     <asp:TableCell Width="10%" Style="text-align: left">
                         <asp:Label runat="server" ID="lblEnrollID" Text='<%#Eval("enrollSID")%>'></asp:Label>

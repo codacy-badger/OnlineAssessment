@@ -9,7 +9,7 @@
             <HeaderTemplate>
                 <h3>Private Assessment</h3>
                 <br />
-                <table class="alt" style="text-align: center">
+                <table class="alt table table-responsive" style="text-align: center">
                     <tr>
                         <td class="auto-style1"><b>No.</b></td>
                         <td class="auto-style1"><b>Subject</b></td>
@@ -56,7 +56,7 @@
             <HeaderTemplate>
                 <h3>Public Assessment</h3>
                 <br />
-                <table class="alt" style="text-align: center">
+                <table class="alt table table-hover" style="text-align: center">
                     <tr>
                         <td class="auto-style1"><b>No.</b></td>
                         <td class="auto-style1"><b>Assessment</b></td>

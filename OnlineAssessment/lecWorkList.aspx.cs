@@ -34,49 +34,6 @@ namespace OnlineAssessment
 
         }
 
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                int score = Convert.ToInt32(e.Row.Cells[4].Text);
-                if (score >= 90)
-                {
-                    e.Row.Cells[5].Text = "A+";
-                }
-                else if (score >= 80)
-                {
-                    e.Row.Cells[5].Text = "A";
-                }
-                else if (score >= 75)
-                {
-                    e.Row.Cells[5].Text = "A-";
-                }
-                else if (score >= 70)
-                {
-                    e.Row.Cells[5].Text = "B+";
-                }
-                else if (score >= 65)
-                {
-                    e.Row.Cells[5].Text = "B";
-                }
-                else if (score >= 60)
-                {
-                    e.Row.Cells[5].Text = "B-";
-                }
-                else if (score >= 55)
-                {
-                    e.Row.Cells[5].Text = "C+";
-                }
-                else if (score >= 50)
-                {
-                    e.Row.Cells[5].Text = "C";
-                }
-                else if (score < 50 && score >= 0)
-                {
-                    e.Row.Cells[5].Text = "F";
-                    e.Row.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
-                }
-            }
-        }
+      
     }
 }
