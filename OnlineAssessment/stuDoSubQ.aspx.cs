@@ -99,7 +99,7 @@ namespace OnlineAssessment
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/stuPage.aspx");
+            Response.Redirect("~/stuDoAssess.aspx");
         }
     }
 }

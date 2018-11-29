@@ -17,7 +17,7 @@
                 <asp:TableCell>
                     <br />
                     <br />
-                    <asp:Button ID="btnPrevious" runat="server" Text="Back to Previous Page" OnClick="btnPrevious_Click" />
+                    <asp:Button ID="btnPrevious" runat="server" Text="Back to Previous Page" OnClick="btnPrevious_Click" class="btn-primary w3-animate-opacity"/>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>

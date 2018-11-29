@@ -4,7 +4,7 @@
 <%--    <LecturerTreeView:Head ID="ctrlLecturerTreeView" runat="server" />--%>
     <div style="width: 70%; margin-left: 15%; margin-top: 5%;">
         <h2>Create Assessment</h2>
-        <table class="table table-striped">
+        <table class="table table-bordered table table-hover">
             <tr>
                 <td style =" width: 30%">Assessment Name:</td>
                 <td>
