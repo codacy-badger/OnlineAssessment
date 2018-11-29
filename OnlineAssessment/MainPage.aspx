@@ -4,7 +4,7 @@
     <br/><br/>
     <br/><br/>
     <br/><br/>
-    <div class="row">
+    <div class="row w3-animate-opacity">
     <div class="col-xs-10 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
     <div class="login-panel panel panel-default">
     <div class="panel-heading">Log in</div>
@@ -14,12 +14,12 @@
         </div>
         
         
-            <fieldset>
+            <fieldset >
                 <div class="form-group">
-                    <input class="form-control" placeholder="E-mail" name="txtEmail" type="email" autofocus="">
+                    <input class="form-control w3-animate-left" placeholder="E-mail" name="txtEmail" type="email" autofocus="">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" placeholder="Password" name="txtPassword" type="password" value="">
+                    <input class="form-control w3-animate-right" placeholder="Password" name="txtPassword" type="password" value="">
                 </div>
                 <div class="checkbox">
                     <label>

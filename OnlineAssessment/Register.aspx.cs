@@ -43,9 +43,9 @@ namespace OnlineAssessment
 
                 cmd = new SqlCommand(query, con);
 
-                cmd.Parameters.Add("@param1", SqlDbType.NVarChar).Value = txtName.Text;
-                cmd.Parameters.Add("@param2", SqlDbType.NVarChar).Value = txtPassword.Text;
-                cmd.Parameters.Add("@param3", SqlDbType.NVarChar).Value = txtEmail.Text.ToUpper();
+                cmd.Parameters.Add("@param1", SqlDbType.NVarChar).Value = Request.Form["txtName"];
+                cmd.Parameters.Add("@param2", SqlDbType.NVarChar).Value = Request.Form["txtPassword"];
+                cmd.Parameters.Add("@param3", SqlDbType.NVarChar).Value = Request.Form["txtEmail"].ToUpper();
                 cmd.Parameters.Add("@param4", SqlDbType.NVarChar).Value = rblGender.SelectedValue;
 
                 con.Open();
@@ -71,7 +71,7 @@ namespace OnlineAssessment
             SqlCommand cmd;
 
             con.Open();
-            query1 = "Select * from Lecture where email = '" + txtEmail.Text.ToUpper() + "'";
+            query1 = "Select * from Lecture where email = '" + Request.Form["txtEmail"].ToUpper() + "'";
             cmd = new SqlCommand(query1, con);
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
@@ -84,7 +84,7 @@ namespace OnlineAssessment
             con.Close();
 
             con.Open();
-            query2 = "Select * from Student where email = '" + txtEmail.Text.ToUpper() + "'";
+            query2 = "Select * from Student where email = '" + Request.Form["txtEmail"].ToUpper() + "'";
             cmd = new SqlCommand(query2, con);
             SqlDataAdapter da1 = new SqlDataAdapter();
             da1.SelectCommand = cmd;
@@ -100,7 +100,10 @@ namespace OnlineAssessment
             return emailExist;
         }
 
-
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Register.aspx", false);
+        }
 
     }
 }

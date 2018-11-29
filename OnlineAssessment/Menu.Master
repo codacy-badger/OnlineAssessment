@@ -10,6 +10,7 @@
     <link href="looks/css/font-awesome.min.css" rel="stylesheet">
     <link href="looks/css/datepicker3.css" rel="stylesheet">
     <link href="looks/css/styles.css" rel="stylesheet">
+    <link href="looks/css/w3-school.css" rel="stylesheet">
     <title></title>
 
 </head>
@@ -23,9 +24,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">ONLINE <span>ASSESSMENT</span> TEST</a>
+                <a class="navbar-brand w3-hover-opacity" href="#">ONLINE <span>ASSESSMENT</span> TEST</a>
                 <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <li class="dropdown "><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                         <em class="fa fa-bell"></em><span class="label label-info">5</span>
                     </a>
                         <ul class="dropdown-menu dropdown-alerts">
@@ -57,103 +58,104 @@
         <!-- /.container-fluid -->
     </nav>
 
-                <%
-                    if (Session["role"] != null)
-                    {
-                        string role = Session["role"].ToString();
-                        if (role == "Lecturer")
-                        {
-                %>
-<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-    <div class="profile-sidebar">
-        <div class="profile-userpic">
-            <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
-        </div>
-        <div class="profile-usertitle">
-            <div class="profile-usertitle-name">Username</div>
-            <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="divider"></div>
-    <form role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
-            <ul class="nav menu">
-                <li id="lecWorkLink" runat="server"><a href="lecWork.aspx"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-                <li id="lecCreateAssessLink" runat="server"><a href="lecCreateAssess.aspx"><em class="fa fa-calendar">&nbsp;</em> Create</a></li>
-                <li id="lecSubLink" runat="server"><a href="lecSub.aspx"><em class="fa fa-bar-chart">&nbsp;</em> Subjects</a></li>
-                <%
-                    }
-                    else if (role == "Student")
-                    {
-                %>
-                <li id="stuDoAssessLink" runat="server"><a href="stuDoAssess.aspx"><em class="fa fa-dashboard">&nbsp;</em> Home</a></li>
-                <li id="stuViewAssessLink" runat="server"><a href="stuViewAssess.aspx"><em class="fa fa-calendar">&nbsp;</em> Scores</a></li>
-                </ul>
-                <%
-                        }
-                    }
-                %>
-    </div>                <%
-                    if (Session["role"] != null)
-                    {
-                          %>
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-        <% }
-                    else
-                    {
-        %>
-    <div class="col-sm-9 col-lg-12 main">
-        
-        <%
-                    }
-        %>
-        <%-- Content --%>
-        <form runat="server">
-            <%-- SiteMapPath & ContentPlaceHolder --%>
-            <div class="row breadcrumb" >
-
-                <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+    <%
+        if (Session["role"] != null)
+        {
+            string role = Session["role"].ToString();
+            if (role == "Lecturer")
+            {
+    %>
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <div class="profile-sidebar">
+            <div class="profile-userpic">
+                <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
             </div>
-            <div class="row">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name">Username</div>
+                <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
             </div>
-            <%-- end --%>
-
-            <div class="footer row">
-                
-                
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <form role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+        </form>
+        <ul class="nav menu">
+            <li id="lecWorkLink" runat="server"><a href="lecWork.aspx"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+            <li id="lecCreateAssessLink" runat="server"><a href="lecCreateAssess.aspx"><em class="fa fa-calendar">&nbsp;</em> Create</a></li>
+            <li id="lecSubLink" runat="server"><a href="lecSub.aspx"><em class="fa fa-bar-chart">&nbsp;</em> Subjects</a></li>
             <%
-                if (Session["role"] != null)
+                }
+                else if (role == "Student")
                 {
             %>
-                    <div style="position:fixed;top:0;left:5%;width:100%;height:100%; z-index: -1">
-                        <p class="back-link" style="width: 50%;height: 50%;top:97%;margin: 0 auto;position: relative;">
-                        © 2018 Online Assessment Site. All Rights Reserved. Know more <a href="AboutUs.aspx">About us</a>
+            <li id="stuDoAssessLink" runat="server"><a href="stuDoAssess.aspx"><em class="fa fa-dashboard">&nbsp;</em> Home</a></li>
+            <li id="stuViewAssessLink" runat="server"><a href="stuViewAssess.aspx"><em class="fa fa-calendar">&nbsp;</em> Scores</a></li>
+        </ul>
+        <%
+                }
+            }
+        %>
+    </div>
+    <%
+        if (Session["role"] != null)
+        {
+    %>
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <% }
+            else
+            {
+        %>
+        <div class="col-sm-9 col-lg-12 main">
+
+            <%
+                }
+            %>
+            <%-- Content --%>
+            <form runat="server">
+                <%-- SiteMapPath & ContentPlaceHolder --%>
+                <div class="row breadcrumb">
+
+                    <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+                </div>
+                <div class="row">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <%-- end --%>
+
+                <div class="footer row">
+
+
+                    <%
+                        if (Session["role"] != null)
+                        {
+                    %>
+                    <div style="position: fixed; top: 0; left: 5%; width: 100%; height: 100%; z-index: -1">
+                        <p class="back-link" style="width: 50%; height: 50%; top: 97%; margin: 0 auto; position: relative;">
+                            © 2018 Online Assessment Site. All Rights Reserved. Know more <a href="AboutUs.aspx">About us</a>
                     </div>
-            <% }
+                    <% }
                     else
                     {
-            %>
-                    <div style="position:fixed;top:0;left:0;width:100%;height:100%; z-index: -1">
-                    <p class="back-link" style="width: 50%;height: 50%;top:97%;margin: 0 auto;position: relative;">
-                    © 2018 Online Assessment Site. All Rights Reserved. Know more <a href="AboutUs.aspx">About us</a>
+                    %>
+                    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1">
+                        <p class="back-link" style="width: 50%; height: 50%; top: 97%; margin: 0 auto; position: relative;">
+                            © 2018 Online Assessment Site. All Rights Reserved. Know more <a href="AboutUs.aspx">About us</a>
                     </div>
-        
-                <%
-                    }
-                %>
+
+                    <%
+                        }
+                    %>
                 
 
                 
                 </p>
-            </div>
-        </form>
-    </div>
+                </div>
+            </form>
+        </div>
 </body>
 
 </html>

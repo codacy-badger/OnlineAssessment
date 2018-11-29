@@ -1,71 +1,75 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="OnlineAssessment.Register" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
-        <div style="width: 70%; margin-left: 15%; margin-top: 5%;">
-            <h2>Register New Account ! 
-            </h2>
 
-            <table class="auto-style21, alt">
-                <tr>
-                    <td class="auto-style1" style="width: 30%">&nbsp;Name:</td>
+    <div class="row w3-animate-opacity">
+        <div class="col-xs-10 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">Register New Account</div>
+                <div class="panel-body">
+                    <div style="font-size: 15px">
+                    </div>
 
-                    <td class="auto-style4">
-                        <asp:TextBox ID="txtName" runat="server" placeholder="Enter your name.."></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style1">Email:</td>
+                    <fieldset>
+                        <div class="form-group">
+                            <p>Name:</p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control w3-animate-left" placeholder="Name" name="txtName" type="text" autofocus="">
+                        </div>
+                        <div class="form-group">
+                            <p>Email:</p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control w3-animate-right" placeholder="abc123@example.com" name="txtEmail" type="text" value="">
+                        </div>
+                        <div class="form-group">
+                            <p>Password:</p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control w3-animate-left" placeholder="Password" name="txtPassword" type="Password" value="">
+                        </div>
+                        <div class="form-group">
+                            <p>Confirm Password:</p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control w3-animate-right" placeholder="Confirm Password" name="txtConfirm" type="Password" value="">
+                        </div>
+                        <div class="form-group">
+                            <p>Gender:</p>
+                        </div>
+                        <div class="form-group">
 
-                    <td class="auto-style10">
-                        <asp:TextBox ID="txtEmail" runat="server" placeholder="chokky-wa16@example.com"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style1">Password:</td>
-                    <td class="auto-style16">
-                        <asp:TextBox ID="txtPassword" runat="server" Width="253px" TextMode="Password" placeholder="Password"></asp:TextBox>
-                    </td>
-                </tr>
+                            <asp:RadioButtonList ID="rblGender" CssClass="radioButtonList" runat="server"   RepeatLayout="Flow">
+                                <asp:ListItem Value="MALE" Selected="True">Male</asp:ListItem>
+                                <asp:ListItem Value="FEMALE">Female</asp:ListItem>
+                            </asp:RadioButtonList>
 
-                <tr>
-                    <td class="auto-style1">Confirm Password:</td>
+                        </div>
+                        <div class="form-group">
+                            <p>Role:</p>
+                        </div>
+                        <div class="form-group">
+                            <asp:RadioButtonList ID="rblRole" CssClass="radioButtonList" runat="server"  RepeatLayout="Flow" >
+                                <asp:ListItem Value="Lecturer" Selected="True">Lecturer</asp:ListItem>
+                                <asp:ListItem Value="Student">Student</asp:ListItem>
+                            </asp:RadioButtonList>
+                        </div>
+                        <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" class="btn btn-primary" />
+                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default" />
+                    </fieldset>
+                    <h5><b><span>Already have an account ?Please[ <a href="MainPage.aspx">Login</a> ].</span></b></h5>
 
-                    <td class="auto-style19">
-                        <asp:TextBox ID="txtConfirm" runat="server" Width="252px" TextMode="Password" placeholder="Confirm Password"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style1">Gender:</td>
-                    <td class="auto-style19">
-                        <asp:RadioButtonList ID="rblGender" runat="server">
-                            <asp:ListItem Value="MALE">Male</asp:ListItem>
-                            <asp:ListItem Value="FEMALE">Female</asp:ListItem>
-                        </asp:RadioButtonList>
-                    </td>
-                </tr>
+                    <asp:Label ID="lblErrorMsg" runat="server" Text="" Visible="false" ForeColor="Red"></asp:Label>
 
-                <tr>
-                    <td class="auto-style1">I am a :</td>
-                    <td class="auto-style19">
-                        <asp:RadioButtonList ID="rblRole" runat="server" Height="66px">
-                            <asp:ListItem Value="Lecturer">Lecturer</asp:ListItem>
-                            <asp:ListItem Value="Student">Student</asp:ListItem>
-                        </asp:RadioButtonList>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
 
-                    <td>
-                        <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn btn-primary" Width="172px" OnClick="btnRegister_Click" />&nbsp;
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary" Width="175px" /><br />
-                        Already have an account ?
-                        <div>Please[ <a href="MainPage.aspx">Login</a> ].</div>
-                    </td>
-                </tr>
-            </table>
+                </div>
+            </div>
         </div>
-  
+        <!-- /.col-->
+    </div>
+    <!-- /.row -->
+ 
 
 </asp:Content>
+
