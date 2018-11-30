@@ -24,7 +24,7 @@ L.lecID = @lecID">
                             <asp:TableCell width="15%" style="text-align:left">
                                 <asp:Label runat="server" ID="lblSubjectCode" Text='<%#Eval("subjectCode")%>'></asp:Label>
                             </asp:TableCell>
-                            <asp:TableCell width="37%" style="text-align:left">
+                            <asp:TableCell width="34%" style="text-align:left">
                                 <asp:Label runat="server" ID="lblSubjectName" Text=' <%#Eval("subjectName")%>'></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell width="10%" style="text-align:left;">
