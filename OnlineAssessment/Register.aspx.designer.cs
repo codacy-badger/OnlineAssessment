@@ -10,7 +10,7 @@
 namespace OnlineAssessment {
     
     
-    public partial class Register {
+    public partial class register {
         
         /// <summary>
         /// rblGender control.

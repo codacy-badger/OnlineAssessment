@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-  <siteMapNode url="MainPage.aspx" title=""  description="">
-    <siteMapNode url="stuDoAssess.aspx" title="Assessment"  description="Assessment" >
-      <siteMapNode url="stuDoMCQ.aspx" title="Multiple Choice Question"  description="Multiple Choice Question" />
-      <siteMapNode url="stuDoSubQ.aspx" title="Subject Question"  description="Subject Question" />
+  <siteMapNode url="login.aspx" title=""  description="">
+    <siteMapNode url="studDoAssessments.aspx" title="Assessment"  description="Assessment" >
+      <siteMapNode url="studDoMCQ.aspx" title="Multiple Choice Questions"  description="Multiple Choice Questions" />
+      <siteMapNode url="studDoSubjective.aspx" title="Subjective Questions"  description="Subjective Questions" />
     </siteMapNode>
-    <siteMapNode url="stuViewAssess.aspx" title="View Assessment"  description="View Assessment" >
-      <siteMapNode url="stuViewMCQ.aspx" title="MCQ Result"  description="MCQ Result" />
-      <siteMapNode url="stuViewSubQ.aspx" title="Subject Result"  description="Subject Result" />
+    <siteMapNode url="studViewAssessments.aspx" title="View Assessments"  description="View Assessments" >
+      <siteMapNode url="studViewMCQ.aspx" title="Results"  description="Results from MCQs" />
+      <siteMapNode url="studViewSubjective.aspx" title="Results"  description="Results from Subjective Questions" />
     </siteMapNode>
-    <siteMapNode url="lecSub.aspx" title="Subject"  description="Subject">
-      <siteMapNode url="EnrollLecture.aspx" title="Lecturer Enrollment"  description="Lecturer Enrollment" />
-      <siteMapNode url="lecSubList.aspx" title="Student Subject List"  description="Student Subject List" >
-        <siteMapNode url="EnrollStudent.aspx" title="Student Enrollment"  description="Student Enrollment" />
+    <siteMapNode url="lectSubjects.aspx" title="Subjects"  description="View Subjects">
+      <siteMapNode url="enrollLecturers.aspx" title="Lecturer Enrollment"  description="Lecturer Enrollment" />
+      <siteMapNode url="lectSubjectList.aspx" title="Student Subject List"  description="Student Subject List" >
+        <siteMapNode url="enrollStudents.aspx" title="Student Enrollment"  description="Student Enrollment" />
       </siteMapNode>
     </siteMapNode>
-    <siteMapNode url="lecCreateAssess.aspx" title="CreateAssessment"  description="CreateAssessment" >
-      <siteMapNode url="lecCreateMCQ.aspx" title="Multiple Choice Question"  description="Multiple Choice Question" />
-      <siteMapNode url="lecCreateSubQ.aspx" title="Subjective Question"  description="Subjective Question" />
+    <siteMapNode url="lectMakeAssessments.aspx" title="Create Assessments"  description="Create Assessments" >
+      <siteMapNode url="lectMakeMCQ.aspx" title="Multiple Choice Questions"  description="Multiple Choice Questions" />
+      <siteMapNode url="lectMakeSubjective.aspx" title="Subjective Questions"  description="Subjective Questions" />
     </siteMapNode>
-    <siteMapNode url="lecWork.aspx" title="Work"  description="Work" >
-      <siteMapNode url="lecWorkList.aspx" title="Work List"  description="Work List" >
-        <siteMapNode url="lecWorkMark.aspx" title="Marking"  description="Marking" />
+    <siteMapNode url="lectViewAssessments.aspx" title="View Assessments"  description="View Assessments" >
+      <siteMapNode url="lectViewAssessmentList.aspx" title="Assessment List"  description="Assessment List" >
+        <siteMapNode url="lectAssessmentMarks.aspx" title="Mark Assessments"  description="Mark Assessments" />
       </siteMapNode>
     </siteMapNode>
   </siteMapNode>

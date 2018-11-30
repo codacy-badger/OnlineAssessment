@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace OnlineAssessment
 {
-    public partial class Register : System.Web.UI.Page
+    public partial class register : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -14,10 +14,10 @@ namespace OnlineAssessment
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            register();
+            regist();
         }
 
-        protected void register()
+        protected void regist()
         {
             string role = rblRole.SelectedValue;
             string query;
@@ -56,7 +56,7 @@ namespace OnlineAssessment
                 con.Close();
                 
                 Response.Write("<script>alert('Register Successfuly. As a " + role + ". Proceed to Login..');" +
-                    "window.location = 'MainPage.aspx'</script>"); 
+                    "window.location = 'login.aspx'</script>"); 
                 
                
             }
@@ -102,7 +102,7 @@ namespace OnlineAssessment
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Register.aspx", false);
+            Response.Redirect("register.aspx", false);
         }
 
     }

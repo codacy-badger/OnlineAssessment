@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="OnlineAssessment.Register" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/assessment.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="OnlineAssessment.register" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -58,7 +58,7 @@
                         <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" class="btn btn-primary w3-hover-opacity" />
                         <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default w3-hover-opacity" />
                     </fieldset>
-                    <h5><b><span>Already have an account ? <a href="MainPage.aspx">Login</a>  here.</span></b></h5>
+                    <h5><b><span>Already have an account ? <a href="login.aspx">Login</a>  here.</span></b></h5>
 
                     <asp:Label ID="lblErrorMsg" runat="server" Text="" Visible="false" ForeColor="Red"></asp:Label>
 
