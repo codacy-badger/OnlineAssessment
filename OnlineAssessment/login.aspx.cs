@@ -28,7 +28,7 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
 
             if (validateLogin() == 0)
-                Response.Write("<script>alert('This is not a registered email!');</script>");
+                Response.Write("<script>alert('Password and email does not match!');</script>");
             else
             {
                 if (validateLogin() == 1) // lecturer

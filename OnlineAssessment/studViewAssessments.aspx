@@ -56,21 +56,24 @@
             <HeaderTemplate>
                 <h3>Public Assessment</h3>
                 <br />
-                <table class="alt table table-hover" style="text-align: center">
-                    <tr>
-                        <td class="auto-style1"><b>No.</b></td>
-                        <td class="auto-style1"><b>Assessment</b></td>
-                        <td class="auto-style1"><b>Type</b></td>
-                        <td class="auto-style1"><b>Mark</b></td>
-                        <td class="auto-style1"><b>Grade</b></td>
-                        <td class="auto-style1"><b>Status</b></td>
-                    </tr>
+                <table class="alt table table-responsive" style="text-align: center">
+                <tr>
+                    <td class="auto-style1"><b>No.</b></td>
+                    <td class="auto-style1"><b>Subject</b></td>
+                    <td class="auto-style1"><b>Assessment</b></td>
+                    <td class="auto-style1"><b>Type</b></td>
+                    <td class="auto-style1"><b>Mark</b></td>
+                    <td class="auto-style1" style="width: 74px"><b>Grade</b></td>
+                    <td class="auto-style1"><b>Status</b></td>
+                </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
                     <td>
                         <asp:Label ID="Label2" runat="server" Text='<%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>'></asp:Label>
                     </td>
+                    <td>
+                        <asp:Label ID="subjectName2" runat="server" Text='<%# Eval("subjectName") %>'></asp:Label></td>
                     <td style="text-align: left">
                         <b>#<asp:Label ID="assessID2" runat="server" Text='<%# Eval("assessID") %>'></asp:Label></b>
                         <asp:Label ID="assessName2" runat="server" Text='<%# Eval("assessName") %>'></asp:Label></td>
@@ -103,9 +106,9 @@ WHERE S.stuID=SA.stuID AND SA.assessID=A.assessID AND A.subjectID=SB.subjectID A
             <asp:SessionParameter Name="stuID" SessionField="userID" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT A.assessID, assessName,status,score,SA.stuAssessID,questType
-FROM Student S, Student_Assessment SA, Assessment A
-WHERE S.stuID=SA.stuID AND SA.assessID=A.assessID AND assessType = 'public' AND S.stuID=@stuID">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT A.assessID, assessName,subjectName,status,score,SA.stuAssessID,questType
+FROM Student S, Student_Assessment SA, Assessment A, Subject SB, EnrollStudent ES
+WHERE S.stuID=SA.stuID AND SA.assessID=A.assessID AND A.subjectID=SB.subjectID AND ES.stuID=S.stuID AND ES.subjectID=SB.subjectID AND assessType = 'public' AND S.stuID=@stuID">
         <SelectParameters>
             <asp:SessionParameter Name="stuID" SessionField="userID" />
         </SelectParameters>

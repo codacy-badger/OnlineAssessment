@@ -42,7 +42,9 @@
                                     <div>
                                         <asp:Label runat="server" Text='<%#Eval("questType")%>' ID="questType"></asp:Label>
                                         -
-                                        <asp:Label runat="server" ID="assessName" Text=' <%#Eval("assessName")%>'></asp:Label><br />
+                                        <asp:Label runat="server" ID="assessName" Text=' <%#Eval("assessName")%>' ></asp:Label><br />
+                                        Subject :
+                                        <asp:Label runat="server" ID="subjectName" Text='<%#Eval("subjectName")%>'></asp:Label><br />
                                         Type :
                                         <asp:Label runat="server" ID="assessType" Text='<%#Eval("assessType")%>'></asp:Label><br />
                                     </div>
@@ -59,9 +61,11 @@
                     </asp:LinkButton>
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM Assessment A, Lecture L WHERE ([assessType] = @assessType) AND L.lecID=A.lecID AND A.assessID NOT IN ( SELECT SA.assessID FROM Student_Assessment SA, Student S WHERE SA.stuID = S.stuID AND S.stuID = @userID)">
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT A.assessID, assessName, assessType, questType, subjectName , lecName
+FROM Assessment A, Subject S, Lecture L 
+WHERE A.subjectID = S.subjectID AND L.lecID=A.lecID AND assessType = 'Public' AND 
+A.subjectID IN ( SELECT ES.subjectID FROM Subject S,  EnrollStudent ES,  Student ST WHERE S.subjectID = ES.subjectID AND ST.stuID = ES.stuID AND ES.stuID = @userID) AND A.assessID NOT IN ( SELECT SA.assessID FROM Student_Assessment SA, Student S WHERE SA.stuID = S.stuID AND S.stuID = @userID)">
                 <SelectParameters>
-                    <asp:Parameter DefaultValue="Public" Name="assessType" Type="String" />
                     <asp:SessionParameter DefaultValue="" Name="userID" SessionField="userID" />
                 </SelectParameters>
 

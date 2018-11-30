@@ -12,7 +12,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style3">AsseAssessment Type
+                <td class="auto-style3">Assessment Type
                 </td>
                 <td class="auto-style3">
 
@@ -22,7 +22,7 @@
                     </asp:RadioButtonList>
 
                     <asp:Label ID="subjectDisplay" runat="server" Text="Subject:" Visible="false"></asp:Label>
-                    <asp:DropDownList ID="ddlSubject" runat="server" Visible="False" AppendDataBoundItems="True"
+                    <asp:DropDownList ID="ddlSubject" runat="server" AppendDataBoundItems="True"
                         DataSourceID="SqlDataSource1" DataTextField="SubjectList" DataValueField="subjectID" AutoPostBack="true">
                         <asp:ListItem Selected="True" Value="0" Text="--Select A Subject--"></asp:ListItem>
                     </asp:DropDownList>

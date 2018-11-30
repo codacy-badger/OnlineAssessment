@@ -21,28 +21,33 @@ ORDER BY subjectName">
         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater2_ItemCommand">
             <HeaderTemplate>
                 <h3>Public</h3>
-                <table class="table table-striped table-hover">
-                    <tr>
-                        <b>
-                            <td style="width: 13%">No.</td>
-                            <td style="width: 27%">Title</td>
-                            <td style="width: 13%">Question Type</td>
-                            <td style="width: 13%">Action</td>
-                        </b>
-                    </tr>
+                <table class="table table-striped  table-hover">
+                <tr>
+                    <b>
+                        <td style="width: 20%">No.</td>
+                        <td style="width: 20%">Title</td>
+                        <td style="width: 20%">Subject</td>
+                        <td style="width: 20%">Question Type</td>
+                        <td style="width: 20%">Action</td>
+                    </b>
+                </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
-                    <td style="text-align: left; width: 13%">
+                    <td style="text-align: left; width: 20%">
                         <asp:Label ID="Label1" runat="server" Text='<%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>'></asp:Label>
                     </td>
-                    <td style="text-align: left; width: 27%">
-                        <asp:Label runat="server" ID="lblAssID" Text=' <%#Eval("assessID")%>' Visible="false"></asp:Label>
-                        <asp:Label runat="server" ID="lblAssName" Text=' <%#Eval("assessName")%>'></asp:Label><br />
-                    </td>
-                    <td style="text-align: left; width: 13%">
+                    <td style="text-align: left; width: 20%">
                         <asp:Label runat="server" ID="lblAssessType" Text=' <%#Eval("assessType")%>' Visible="false"></asp:Label>
-                        <asp:Label runat="server" ID="lblQuestType" Text=' <%#Eval("questType")%>'></asp:Label><br />
+                        <asp:Label runat="server" ID="lblAssName" Text=' <%#Eval("assessName")%>'></asp:Label>
+                    </td>   
+                    <td style="text-align: left; width: 20%">
+                        <asp:Label runat="server" ID="lblAssID" Text=' <%#Eval("assessID")%>' Visible="false"></asp:Label>
+                        <asp:Label runat="server" ID="lblSubname" Text=' <%#Eval("subjectName")%>'></asp:Label>
+                    </td>
+                    
+                    <td style="text-align: left; width: 20%">
+                        <asp:Label runat="server" ID="lblQuestType" Text=' <%#Eval("questType")%>'></asp:Label>
                     </td>
                     <td style="text-align: left; width: 13%">
                         <asp:LinkButton ID="LinkButton1" runat="server" CommandName="view" CommandArgument='<%# Eval("assessID") %>' class="btn btn-primary w3-hover-shadow">View</asp:LinkButton>
@@ -97,9 +102,10 @@ ORDER BY subjectName">
                 </table>
             </FooterTemplate>
         </asp:Repeater>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [assessName], [questType] ,assessID,assessType
-FROM Assessment A
-WHERE assessType = 'public' AND A.lecID=@userID">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT subjectName, [assessName], [questType] ,A.assessID,assessType
+FROM Subject S, Assessment A
+WHERE S.subjectID = A.subjectID AND assessType = 'public' AND A.lecID=@userID
+ORDER BY subjectName">
             <SelectParameters>
                 <asp:SessionParameter Name="userID" SessionField="UserId" />
             </SelectParameters>
