@@ -122,7 +122,30 @@
         </div>
         <div class="profile-usertitle">
         <div class="profile-usertitle-name"><asp:Label ID="userName" runat="server" Text=""></asp:Label></div>
-        <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+            
+            
+            
+            <%
+                string role = Session["role"].ToString();
+                if (role == "Lecturer")
+                {
+            %>
+
+        <div class="profile-usertitle-status"><span class="indicator label-success"></span>Lecturer</div>
+                
+                
+            <%
+                }
+                else if (role == "Student")
+                {
+            %>
+            
+                <div class="profile-usertitle-status"><span class="indicator label-info"></span>Student</div>
+                
+            <%
+                }
+            %>
+
         </div>
         <div class="clear"></div>
         </div>
@@ -132,7 +155,6 @@
 
 
                   <%
-                      string role = Session["role"].ToString();
                       if (role == "Lecturer")
                       {
                   %>
