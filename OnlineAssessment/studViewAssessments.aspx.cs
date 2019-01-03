@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace OnlineAssessment
@@ -7,8 +8,27 @@ namespace OnlineAssessment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Repeater1.DataBind();
+            Repeater2.DataBind();
 
+            if (Repeater1.Items.Count == 0 && Repeater2.Items.Count == 0)
+            {
+                EmptyRepeater.RepeatTitle = "";
+                Repeater1.HeaderTemplate = LoadTemplate("EmptyRepeater.ascx");
+                Repeater2.HeaderTemplate = null;
+            }
+            else if (Repeater1.Items.Count == 0)
+            {
+                EmptyRepeater.RepeatTitle = "Private Assessments";
+                Repeater1.HeaderTemplate = LoadTemplate("EmptyRepeater.ascx");
+            }
+            else if (Repeater2.Items.Count == 0)
+            {
+                EmptyRepeater.RepeatTitle = "Public Assessments";
+                Repeater2.HeaderTemplate = LoadTemplate("EmptyRepeater.ascx");
+            }
         }
+
         protected void select_Click(object sender, EventArgs e)
         {
 

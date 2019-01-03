@@ -10,20 +10,37 @@ namespace OnlineAssessment
         static int assessID;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ddlSubject.DataBind();
+            if (ddlSubject.Items.Count == 0)
+            {
+                ddlSubject.Visible = false;
+                error2.Text = "Not enrolled to any subject!";
+            }
+            else
+            {
+                error2.Text = "";
+            }
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            addAssessment();
-            Session["assessment"] = txtName.Text;
-            Session["assessID"] = assessID;
-            Session["subjectID"] = ddlSubject.SelectedValue;
-            Session["type"] = rblAssessType.SelectedValue;
-            if (rblQuestType.SelectedValue == "MCQ")
-                Response.Redirect("~/lectMakeMCQ.aspx");
+            if (Page.IsValid)
+            {
+                error1.Text = "";
+                addAssessment();
+                Session["assessment"] = txtName.Text;
+                Session["assessID"] = assessID;
+                Session["subjectID"] = ddlSubject.SelectedValue;
+                Session["type"] = rblAssessType.SelectedValue;
+                if (rblQuestType.SelectedValue == "MCQ")
+                    Response.Redirect("~/lectMakeMCQ.aspx");
+                else
+                    Response.Redirect("~/lectMakeSubjective.aspx");
+            }
             else
-                Response.Redirect("~/lectMakeSubjective.aspx");
+            {
+                error1.Text = "Invalid input! Make sure all fields are correct!";
+            }
         }
         protected void btnReset_Click(object sender, EventArgs e)
         {
@@ -44,8 +61,8 @@ namespace OnlineAssessment
             cmd.Parameters.Add("@param1", SqlDbType.NVarChar).Value = txtName.Text;
             cmd.Parameters.Add("@param2", SqlDbType.NVarChar).Value = rblAssessType.SelectedValue;
             cmd.Parameters.Add("@param3", SqlDbType.NVarChar).Value = rblQuestType.SelectedValue;
-            cmd.Parameters.Add("@param5", SqlDbType.NVarChar).Value = Session["userID"];
             cmd.Parameters.Add("@param4", SqlDbType.Int).Value = ddlSubject.SelectedValue;
+            cmd.Parameters.Add("@param5", SqlDbType.NVarChar).Value = Session["userID"];
 
             con.Open();
             cmd.CommandType = CommandType.Text;

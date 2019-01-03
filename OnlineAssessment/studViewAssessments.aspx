@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/assessment.Master" AutoEventWireup="true" CodeBehind="studViewAssessments.aspx.cs" Inherits="OnlineAssessment.studViewAssessments" %>
-
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 
     <div style="width: 70%; margin-left: 15%; margin-top: 3%;">

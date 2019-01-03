@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/assessment.Master" AutoEventWireup="true" CodeBehind="studDoMCQ.aspx.cs" Inherits="OnlineAssessment.studDoMCQ" %>
+<%@ Import Namespace="System.Globalization" %>
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 
@@ -17,6 +18,9 @@
             <ItemTemplate>
                 <div style="padding: 15px">
                     Question <%# Container.ItemIndex + 1 %>. <%# Eval("questName") %><br /> 
+                    <div>
+                        <asp:Image ImageUrl='<%# $"data:image/jpg;base64,{Convert.ToBase64String(Eval("image") is byte[] ? (byte[]) Eval("image") : new Byte[8])}" %>' Visible='<%#Eval("image") is byte[]%>' runat="server" Width="70%" />
+                    </div>
                     <div id="div_A" runat="server">
                         <asp:RadioButton GroupName="a" Text='<%# "A. " + Eval("selectA") %>' runat="server" ID="selectA" />
                     </div>

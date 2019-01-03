@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace OnlineAssessment
 {
@@ -50,14 +51,22 @@ namespace OnlineAssessment
 
         protected void btnDone_Click(object sender, EventArgs e)
         {
-            if (txtQuestion.Text != "")
-                addQuestion();
+            if (Page.IsValid)
+            {
+                error1.Text = "";
+                if (txtQuestion.Text != "")
+                    addQuestion();
 
-            MultiView1.ActiveViewIndex = 1;
-            btnFinish.Visible = true;
-            btnAddMore.Visible = true;
+                MultiView1.ActiveViewIndex = 1;
+                btnFinish.Visible = true;
+                btnAddMore.Visible = true;
+            }
+            else
+            {
+                error1.Text = "Cannot submit! Make sure all fields are valid!";
+            }
         }
-
+        
         protected void btnFinish_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/lectViewAssessments.aspx");
@@ -77,6 +86,14 @@ namespace OnlineAssessment
             if (rbB.Checked) { choiceAns = 'B'; }
             else if (rbC.Checked) { choiceAns = 'C'; }
             else if (rbD.Checked) { choiceAns = 'D'; }
+            
+            // Image Upload
+            byte[] data = null;
+            if (imageUpload.HasFile)
+            {
+                imageUpload.PostedFile.SaveAs(Server.MapPath("~/Images/temp.jpeg"));
+                data = File.ReadAllBytes(Server.MapPath("~/Images/temp.jpeg"));
+            }
 
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
@@ -96,8 +113,8 @@ namespace OnlineAssessment
                 con.Close();
             }
 
-            string query = "INSERT INTO Question(assessID, questName, selectA, selectB, selectC, selectD, answer) " +
-            "VALUES (@param1, @param2, @param3, @param4, @param5, @param6, @param7)";
+            string query = "INSERT INTO Question(assessID, questName, selectA, selectB, selectC, selectD, answer, image) " +
+            "VALUES (@param1, @param2, @param3, @param4, @param5, @param6, @param7, @param8)";
 
             cmd = new SqlCommand(query, con);
 
@@ -108,6 +125,14 @@ namespace OnlineAssessment
             cmd.Parameters.Add("@param5", SqlDbType.NVarChar).Value = txtC.Text;
             cmd.Parameters.Add("@param6", SqlDbType.NVarChar).Value = txtD.Text;
             cmd.Parameters.Add("@param7", SqlDbType.NChar).Value = choiceAns;
+            if (data != null)
+            {
+                cmd.Parameters.Add("@param8", SqlDbType.VarBinary).Value = data;
+            }
+            else
+            {
+                cmd.Parameters.Add("@param8", SqlDbType.VarBinary).Value = DBNull.Value;
+            }
 
             con.Open();
             cmd.CommandType = CommandType.Text;
@@ -144,52 +169,53 @@ namespace OnlineAssessment
             }
             else if (e.CommandName == "update")
             {
-                RadioButton rbEditA = (RadioButton)e.Item.FindControl("rbEditA");
-                RadioButton rbEditB = (RadioButton)e.Item.FindControl("rbEditB");
-                RadioButton rbEditC = (RadioButton)e.Item.FindControl("rbEditC");
-                RadioButton rbEditD = (RadioButton)e.Item.FindControl("rbEditD");
-                char answer = '-';
-                if (rbEditA.Checked == true)
-                {
-                    answer = 'A';
-                }
-                else if (rbEditB.Checked == true)
-                {
-                    answer = 'B';
-                }
-                else if (rbEditC.Checked == true)
-                {
-                    answer = 'C';
-                }
-                else if (rbEditD.Checked == true)
-                {
-                    answer = 'D';
-                }
+                    RadioButton rbEditA = (RadioButton) e.Item.FindControl("rbEditA");
+                    RadioButton rbEditB = (RadioButton) e.Item.FindControl("rbEditB");
+                    RadioButton rbEditC = (RadioButton) e.Item.FindControl("rbEditC");
+                    RadioButton rbEditD = (RadioButton) e.Item.FindControl("rbEditD");
+                    char answer = '-';
+                    if (rbEditA.Checked == true)
+                    {
+                        answer = 'A';
+                    }
+                    else if (rbEditB.Checked == true)
+                    {
+                        answer = 'B';
+                    }
+                    else if (rbEditC.Checked == true)
+                    {
+                        answer = 'C';
+                    }
+                    else if (rbEditD.Checked == true)
+                    {
+                        answer = 'D';
+                    }
 
-                int questID = Convert.ToInt32(((Label)e.Item.FindControl("lblQuest")).Text);
-                int assessID = Convert.ToInt32(((Label)e.Item.FindControl("lblAssess")).Text);
-                string question = ((TextBox)e.Item.FindControl("editQuest")).Text;
-                string selectA = ((TextBox)e.Item.FindControl("editA")).Text;
-                string selectB = ((TextBox)e.Item.FindControl("editB")).Text;
-                string selectC = ((TextBox)e.Item.FindControl("editC")).Text;
-                string selectD = ((TextBox)e.Item.FindControl("editD")).Text;
+                    int questID = Convert.ToInt32(((Label) e.Item.FindControl("lblQuest")).Text);
+                    int assessID = Convert.ToInt32(((Label) e.Item.FindControl("lblAssess")).Text);
+                    string question = ((TextBox) e.Item.FindControl("editQuest")).Text;
+                    string selectA = ((TextBox) e.Item.FindControl("editA")).Text;
+                    string selectB = ((TextBox) e.Item.FindControl("editB")).Text;
+                    string selectC = ((TextBox) e.Item.FindControl("editC")).Text;
+                    string selectD = ((TextBox) e.Item.FindControl("editD")).Text;
 
-                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                SqlConnection con = new SqlConnection(strCon);
-                SqlCommand cmd = new SqlCommand("update question set questName = '"
-                    + question + "', selectA = '" + selectA + "', selectB = '" + selectB +
-                    "', selectC = '" + selectC + "', selectD = '" + selectD + "', answer = '" + answer +
-                    "' WHERE questID = " + questID + " AND assessID = " + assessID, con);
+                    string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                    SqlConnection con = new SqlConnection(strCon);
+                    SqlCommand cmd = new SqlCommand("update question set questName = '"
+                                                    + question + "', selectA = '" + selectA + "', selectB = '" +
+                                                    selectB +
+                                                    "', selectC = '" + selectC + "', selectD = '" + selectD +
+                                                    "', answer = '" + answer +
+                                                    "' WHERE questID = " + questID + " AND assessID = " + assessID,
+                        con);
 
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                DataList1.EditItemIndex = -1;
-
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    DataList1.EditItemIndex = -1;
             }
             DataList1.DataBind();
         }
-
-
+        
     }
 }

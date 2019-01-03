@@ -20,6 +20,21 @@ namespace OnlineAssessment
                     + Session["assessName"].ToString() + "<br/>Assessment Type : "
                     + Session["assessType"].ToString();
             }
+
+            Repeater1.DataBind();
+            Repeater2.DataBind();
+            
+            if (Repeater1.Items.Count == 0)
+            {
+                EmptyRepeater.RepeatTitle = "";
+                Repeater1.HeaderTemplate = LoadTemplate("EmptyRepeater.ascx");
+            }
+            if (Repeater2.Items.Count == 0)
+            {
+                EmptyRepeater.RepeatTitle = "";
+                Repeater2.HeaderTemplate = LoadTemplate("EmptyRepeater.ascx");
+            }
+
         }
 
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)

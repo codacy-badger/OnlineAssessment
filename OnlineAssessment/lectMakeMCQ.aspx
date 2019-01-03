@@ -28,31 +28,47 @@
                                 <tr>
                                     <td>Question: </td>
                                     <td>
-                                        <asp:TextBox ID="txtQuestion" runat="server"></asp:TextBox></td>
+                                        <asp:TextBox ID="txtQuestion" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtQuestion" ErrorMessage="Required field!"></asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        Question Image: 
+                                        <asp:FileUpload ID="imageUpload" runat="server" />
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:RadioButton ID="rbA" runat="server" GroupName="Answer" Text="A." /></td>
+                                        <asp:RadioButton ID="rbA" runat="server" GroupName="Answer" Text="A." Checked="True" /></td>
                                     <td>
-                                        <asp:TextBox ID="txtA" runat="server"></asp:TextBox></td>
+                                        <asp:TextBox ID="txtA" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtA" ErrorMessage="Required field!"></asp:RequiredFieldValidator>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <asp:RadioButton ID="rbB" runat="server" GroupName="Answer" Text="B." /></td>
                                     <td>
-                                        <asp:TextBox ID="txtB" runat="server"></asp:TextBox></td>
+                                        <asp:TextBox ID="txtB" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtB" ErrorMessage="Required field!"></asp:RequiredFieldValidator>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <asp:RadioButton ID="rbC" runat="server" GroupName="Answer" Text="C." /></td>
                                     <td>
-                                        <asp:TextBox ID="txtC" runat="server"></asp:TextBox></td>
+                                        <asp:TextBox ID="txtC" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtC" ErrorMessage="Required field!"></asp:RequiredFieldValidator>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <asp:RadioButton ID="rbD" runat="server" GroupName="Answer" Text="D." /></td>
                                     <td>
-                                        <asp:TextBox ID="txtD" runat="server"></asp:TextBox></td>
+                                        <asp:TextBox ID="txtD" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtD" ErrorMessage="Required field!"></asp:RequiredFieldValidator>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">Please <b>TICK</b> the correct answer</td>
@@ -64,9 +80,13 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click"  class="btn btn-default w3-animate-opacity"/></td>
+                                        <a href="lectMakeAssessments.aspx" ID="btnBack" class="btn btn-default w3-animate-opacity">Back</a></td>
                                     <td>
-                                        <asp:Button ID="btnDone" runat="server" Text="Done" OnClick="btnDone_Click" class="btn btn-success w3-animate-opacity"/></td>
+                                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click"  class="btn btn-default w3-animate-opacity"/>
+                                        &nbsp;
+                                        <asp:Button ID="btnDone" runat="server" Text="Done" OnClick="btnDone_Click" class="btn btn-success w3-animate-opacity"/>&nbsp;
+                                        <asp:Label ID="error1" runat="server"></asp:Label>
+                                    </td>
                                 </tr>
                             </table>
                         </asp:View>
@@ -174,6 +194,12 @@
                     <asp:Button ID="btnFinish" runat="server" Text="Finish" OnClick="btnFinish_Click" Visible="false"
                         OnClientClick="return confirm('Finish adding question?');" class="btn btn-success w3-animate-opacity"/>
                     <asp:Button ID="btnAddMore" runat="server" Text="Add more" Visible="false" OnClick="btnAddMore_Click" class="btn btn-primary w3-animate-opacity"/>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Question] WHERE ([assessID] = @assessID)">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="assessID" SessionField="accessID" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:Repeater ID="Repeater1" runat="server"></asp:Repeater>
                 </td>
 
             </tr>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="login.aspx" title=""  description="">
-    <siteMapNode url="studDoAssessments.aspx" title="Assessment"  description="Assessment" >
+    <siteMapNode url="studDoAssessments.aspx" title="Home"  description="Assessments" >
       <siteMapNode url="studDoMCQ.aspx" title="Multiple Choice Questions"  description="Multiple Choice Questions" />
       <siteMapNode url="studDoSubjective.aspx" title="Subjective Questions"  description="Subjective Questions" />
     </siteMapNode>
@@ -19,10 +19,11 @@
       <siteMapNode url="lectMakeMCQ.aspx" title="Multiple Choice Questions"  description="Multiple Choice Questions" />
       <siteMapNode url="lectMakeSubjective.aspx" title="Subjective Questions"  description="Subjective Questions" />
     </siteMapNode>
-    <siteMapNode url="lectViewAssessments.aspx" title="View Assessments"  description="View Assessments" >
+    <siteMapNode url="lectViewAssessments.aspx" title="Home"  description="View Assessments" >
       <siteMapNode url="lectViewAssessmentList.aspx" title="Assessment List"  description="Assessment List" >
         <siteMapNode url="lectAssessmentMarks.aspx" title="Mark Assessments"  description="Mark Assessments" />
       </siteMapNode>
     </siteMapNode>
+    <siteMapNode url="about.aspx" title="About Us" description="About Us"></siteMapNode>
   </siteMapNode>
 </siteMap>

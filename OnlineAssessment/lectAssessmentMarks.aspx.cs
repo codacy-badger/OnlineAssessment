@@ -34,26 +34,38 @@ namespace OnlineAssessment
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            string stuAssessID = Session["stuAssessID"].ToString();
-            foreach (DataListItem row in DataList1.Items)
+            if (Page.IsValid)
             {
-                TextBox lecComment = (TextBox)row.FindControl("lecComment");
-                TextBox score = (TextBox)row.FindControl("stuScore");
-                Label questID = (Label)row.FindControl("questID");
-                Label mark = (Label)row.FindControl("mark");
-                updateStuAns(Convert.ToInt32(stuAssessID), lecComment.Text, Convert.ToInt32(questID.Text), Convert.ToInt32(score.Text));
-                TotalMark += Convert.ToInt32(mark.Text);
-                stuScore += Convert.ToInt32(score.Text);
-                score.ReadOnly = true;
-                lecComment.ReadOnly = true;
-            }
-            calculateStuScore(TotalMark, stuScore, Convert.ToInt32(stuAssessID));
+                string stuAssessID = Session["stuAssessID"].ToString();
+                foreach (DataListItem row in DataList1.Items)
+                {
+                    TextBox lecComment = (TextBox) row.FindControl("lecComment");
+                    TextBox score = (TextBox) row.FindControl("stuScore");
+                    Label questID = (Label) row.FindControl("questID");
+                    Label mark = (Label) row.FindControl("mark");
+                    updateStuAns(Convert.ToInt32(stuAssessID), lecComment.Text, Convert.ToInt32(questID.Text),
+                        Convert.ToInt32(score.Text));
+                    TotalMark += Convert.ToInt32(mark.Text);
+                    stuScore += Convert.ToInt32(score.Text);
+                    score.ReadOnly = true;
+                    lecComment.ReadOnly = true;
+                }
 
-            lblMsg.Text = "Done marking.. <br/>" +
-                        "Student Score: " + finalmark + "%";
-            btnSubmit.Visible = false;
-            btnReset.Visible = false;
-            displayMsg.Visible = true;
+                calculateStuScore(TotalMark, stuScore, Convert.ToInt32(stuAssessID));
+
+                lblMsg.Text = "Done marking.. <br/>" +
+                              "Student Score: " + finalmark + "%";
+                btnSubmit.Visible = false;
+                btnReset.Visible = false;
+                displayMsg.Visible = true;
+                error1.Attributes.Remove("Style");
+                error1.Text = "";
+            }
+            else
+            {
+                error1.Attributes.Add("Style", "background-color: #ff7d7d;");
+                error1.Text = "Cannot submit! Make sure all fields are valid first!";
+            }
 
         }
         protected void btnReset_Click(object sender, EventArgs e)

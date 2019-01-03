@@ -5,7 +5,7 @@
 
         <div class="col-lg-10">
             <h2>Subjects</h2>
-            <a href="enrollLecturers.aspx"><asp:LinkButton ID="LinkButton3" class="btn btn-success w3-hover-shadow">Enroll</asp:LinkButton></a>
+            <a href="enrollLecturers.aspx" class="btn btn-success w3-hover-shadow" >Enroll </a>
             <br /><br />
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [subjectCode], [subjectName] 
 FROM Lecture L, enrollLecturer EL, Subject S

@@ -68,8 +68,6 @@ WHERE SA.stuID = S.stuID AND status = 'progress' AND assessID =@assessID">
     <%--IN PROCESS EDITING--%>
     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource2">
         <HeaderTemplate>
-            <h3>Private Assessment</h3>
-            <br />
             <table class="alt table table-responsive table-hover" style="text-align: center">
                 <tr>
                     <td class="auto-style1"><b>No.</b></td>

@@ -70,6 +70,8 @@
     <Content Include="App_Data\Assessment_log.ldf">
       <DependentUpon>Assessment.mdf</DependentUpon>
     </Content>
+    <Content Include="EmptyRepeater.ascx" />
+    <Content Include="error\genericError.aspx" />
     <Content Include="lectTreeView.ascx" />
     <Content Include="lectViewAssessmentList.aspx" />
     <Content Include="lectViewAssessments.aspx" />
@@ -109,6 +111,20 @@
     </Compile>
     <Compile Include="about.aspx.designer.cs">
       <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmptyRepeater.ascx.cs">
+      <DependentUpon>EmptyRepeater.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmptyRepeater.ascx.designer.cs">
+      <DependentUpon>EmptyRepeater.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="error\genericError.aspx.cs">
+      <DependentUpon>genericError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error\genericError.aspx.designer.cs">
+      <DependentUpon>genericError.aspx</DependentUpon>
     </Compile>
     <Compile Include="lectTreeView.ascx.cs">
       <DependentUpon>lectTreeView.ascx</DependentUpon>

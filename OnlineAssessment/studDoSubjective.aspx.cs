@@ -71,8 +71,8 @@ namespace OnlineAssessment
             btnReset.Visible = false;
             btnHome.Visible = true;
             lblResult.Visible = true;
-            lblResult.Text = "Thank for your participate..<br/>" +
-                "Your paper will be mark soon..<br/>";
+            lblResult.Text = "Thank for your participation,<br/>" +
+                "your paper will be marked soon.<br/>";
 
         }
         private void addStudAns(int stuAssID, int questID, String answer)

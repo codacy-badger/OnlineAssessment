@@ -14,6 +14,19 @@ namespace OnlineAssessment
                 Session.Clear();
                 Session.Abandon();
             }
+
+            if (Request.QueryString["resession"] != null)
+            {
+                lblErrorMsg.Visible = false;
+                if (Request.QueryString["resession"] == "yes")
+                lblErrorMsg.Visible = true;
+                lblErrorMsg.Text = "Session ended! Please login again.";
+            }
+            else
+            {
+                lblErrorMsg.Visible = false;
+            }
+
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

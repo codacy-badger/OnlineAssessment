@@ -15,8 +15,12 @@
                 <ItemTemplate>
                     <div style="padding: 15px"  >
                         Question <%# Container.ItemIndex + 1 %>. <%# Eval("questName") %>
+                        <div>
+                            <asp:Image ImageUrl='<%# $"data:image/jpg;base64,{Convert.ToBase64String(Eval("image") is byte[] ? (byte[]) Eval("image") : new Byte[8])}" %>' Visible='<%#Eval("image") is byte[]%>' runat="server" Width="70%" />
+                        </div>
                         <asp:Label ID="questID" runat="server" Text='<%#Eval("questID")%>' Visible="false"></asp:Label><br />
                         <div style="padding: 15px">
+                            Your answer: <br/>
                             <asp:TextBox ID="subAns" runat="server" Height="200px" TextMode="MultiLine" Style="resize: none" Width="522px"></asp:TextBox>
                         </div>
                         <div style="text-align: right">

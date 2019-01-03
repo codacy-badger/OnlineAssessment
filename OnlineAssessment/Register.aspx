@@ -12,28 +12,41 @@
 
                     <fieldset>
                         <div class="form-group">
-                            <p>Name:</p>
+                            <p>Name:
+                                <asp:RequiredFieldValidator ID="required1" runat="server" ControlToValidate="txtName" ErrorMessage="Required field!" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </p>
                         </div>
                         <div class="form-group">
-                            <input class="form-control w3-animate-left" placeholder="Name" name="txtName" type="text" autofocus="">
+                            <asp:TextBox class="form-control w3-animate-left" placeholder="Name" name="txtName" id="txtName" type="text" autofocus="" runat="server"/>
                         </div>
                         <div class="form-group">
-                            <p>Email:</p>
+                            <p>Email:
+                                <asp:RegularExpressionValidator ID="regex2" runat="server" ErrorMessage="Not an email!" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" ControlToValidate="txtEmail" ForeColor="Red"></asp:RegularExpressionValidator>
+                            &nbsp;
+                                <asp:RequiredFieldValidator ID="required2" runat="server" ControlToValidate="txtEmail" ErrorMessage="Required field!" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </p>
                         </div>
                         <div class="form-group">
-                            <input class="form-control w3-animate-right" placeholder="abc123@example.com" name="txtEmail" type="text" value="">
+                            <asp:TextBox class="form-control w3-animate-right" placeholder="abc123@example.com" name="txtEmail" id="txtEmail" type="text" value="" runat="server"/>
                         </div>
                         <div class="form-group">
-                            <p>Password:</p>
+                            <p>Password:
+                                <asp:RegularExpressionValidator ID="regex3" runat="server" ErrorMessage="Password must be alphanumerical and between 8-20 characters long." ControlToValidate="password1" ValidationExpression="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?&lt;![_.])$" ForeColor="Red"></asp:RegularExpressionValidator>
+                            &nbsp;
+                                <asp:RequiredFieldValidator ID="required3" runat="server" ControlToValidate="password1" ErrorMessage="Required field!" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </p>
                         </div>
                         <div class="form-group">
-                            <input class="form-control w3-animate-left" placeholder="Password" name="txtPassword" type="Password" value="">
+                            <asp:TextBox class="form-control w3-animate-left" placeholder="Password" name="txtPassword" type="Password" value="" id="password1" runat="server"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <p>Confirm Password:</p>
+                            <p>Confirm Password: <asp:Label ID="error1" runat="server" ForeColor="Red"></asp:Label>
+                            &nbsp;
+                                <asp:RequiredFieldValidator ID="required4" runat="server" ControlToValidate="password2" ErrorMessage="Required field!" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </p>
                         </div>
                         <div class="form-group">
-                            <input class="form-control w3-animate-right" placeholder="Confirm Password" name="txtConfirm" type="Password" value="">
+                            <asp:TextBox class="form-control w3-animate-left" placeholder="Confirm Password" name="txtPassword2" type="Password" value="" id="password2" runat="server"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <p>Gender:</p>

@@ -30,9 +30,15 @@
                                         <div>
                                             <asp:Label ID="question" Text="Question: " runat="server" Style="float: left; padding: 5px;" Width="76px"></asp:Label>
                                             <asp:TextBox ID="txtDesc" runat="server" Style="float: left; padding: 5px; height: 2.25em;"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDesc" ErrorMessage="Required field!"></asp:RequiredFieldValidator>
+                                        </div>
+                                        
+                                        <div style="margin-top: 45px">
+                                            Question Image: 
+                                            <asp:FileUpload ID="imageUpload" runat="server" />
                                         </div>
 
-                                        <div style="margin-top: 45px;">
+                                        <div style="margin-top: 25px;">
                                             <asp:Label ID="Label5" Text="Marks: " runat="server" Style="float: left; padding: 5px;" Width="76px"></asp:Label>
                                             <asp:DropDownList ID="ddlMark" runat="server" Style="height: 2.25em;">
                                                 <asp:ListItem Value="1">1</asp:ListItem>
@@ -40,6 +46,21 @@
                                                 <asp:ListItem Value="3">3</asp:ListItem>
                                                 <asp:ListItem Value="4">4</asp:ListItem>
                                                 <asp:ListItem Value="5">5</asp:ListItem>
+                                                <asp:ListItem Value="6">6</asp:ListItem>
+                                                <asp:ListItem Value="7">5</asp:ListItem>
+                                                <asp:ListItem Value="8">7</asp:ListItem>
+                                                <asp:ListItem Value="9">8</asp:ListItem>
+                                                <asp:ListItem Value="10">10</asp:ListItem>
+                                                <asp:ListItem Value="11">11</asp:ListItem>
+                                                <asp:ListItem Value="12">12</asp:ListItem>
+                                                <asp:ListItem Value="13">13</asp:ListItem>
+                                                <asp:ListItem Value="14">14</asp:ListItem>
+                                                <asp:ListItem Value="15">15</asp:ListItem>
+                                                <asp:ListItem Value="16">16</asp:ListItem>
+                                                <asp:ListItem Value="17">17</asp:ListItem>
+                                                <asp:ListItem Value="18">18</asp:ListItem>
+                                                <asp:ListItem Value="19">19</asp:ListItem>
+                                                <asp:ListItem Value="20">20</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </td>
@@ -50,10 +71,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 169px">
-                                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default w3-animate-opacity"/></td>
                                     <td>
-                                        <asp:Button ID="btnDone" runat="server" Text="Done" OnClick="btnDone_Click" class="btn btn-success w3-animate-opacity"/></td>
+                                        <a href="lectMakeAssessments.aspx" ID="btnBack" class="btn btn-default w3-animate-opacity">Back</a>&nbsp;&nbsp;&nbsp;<asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" class="btn btn-default w3-animate-opacity"/>&nbsp;
+                                        <asp:Button ID="btnDone" runat="server" class="btn btn-success w3-animate-opacity" OnClick="btnDone_Click" Text="Done" />
+                                        &nbsp;
+                                        <asp:Label ID="error1" runat="server"></asp:Label>
+                                    </td>
                                 </tr>
                             </table>
                         </asp:View>
@@ -136,6 +159,13 @@
                     <asp:Button ID="btnFinish" runat="server" Text="Finish" OnClick="btnFinish_Click" Visible="false"
                         OnClientClick="return confirm('Finish add question?');" class="btn btn-success w3-animate-opacity"/>
                     <asp:Button ID="btnAddMore" runat="server" Text="Add more" Visible="false" OnClick="btnAddMore_Click" class="btn btn-primary w3-animate-opacity"/>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Question] WHERE ([assessID] = @assessID)">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="assessID" SessionField="assessID" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:Repeater ID="Repeater1" runat="server">
+                    </asp:Repeater>
                 </td>
             </tr>
         </table>

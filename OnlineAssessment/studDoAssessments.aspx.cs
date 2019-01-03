@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace OnlineAssessment
@@ -7,9 +10,18 @@ namespace OnlineAssessment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Global.DeleteEmptyAssessments(); // 
+            Repeater1.DataBind();
+            Repeater2.DataBind();
 
+            if (Repeater1.Items.Count == 0 && Repeater2.Items.Count == 0)
+            {
+                EmptyRepeater.RepeatTitle = "";
+                Repeater1.HeaderTemplate = LoadTemplate("EmptyRepeater.ascx");
+                Repeater2.HeaderTemplate = null;
+            }
         }
-
+        
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             Label lblQuestType = (Label)e.Item.FindControl("questType");

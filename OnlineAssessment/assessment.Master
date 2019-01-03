@@ -152,8 +152,6 @@
         <div class="divider"></div>
             <ul class="nav menu">
 
-
-
                   <%
                       if (role == "Lecturer")
                       {
@@ -161,7 +159,7 @@
             <li id="lectViewAssessmentsLink" runat="server"><a href="lectViewAssessments.aspx"><em class="fa fa-home">&nbsp;</em> Home</a></li>
             <li id="lecCreateAssessLink" runat="server"><a href="lectMakeAssessments.aspx"><em class="fa fa-file-text-o">&nbsp;&nbsp;</em> Create</a></li>
             <li id="lecSubLink" runat="server"><a href="lectSubjects.aspx"><em class="fa fa-th-list">&nbsp;</em> Subjects</a></li>
-            <li id="lecaboutLink" runat="server"><a href="about.aspx"><em class="fa fa-info">&nbsp;&nbsp;&nbsp;</em> About</a></li>
+            <li id="lecaboutLink" runat="server"><a href="about.aspx"><em class="fa fa-info">&nbsp;&nbsp;&nbsp;</em> About Us</a></li>
             <%
                       }
                       else if (role == "Student")
@@ -169,7 +167,7 @@
             %>
             <li id="studDoAssessmentsLink" runat="server"><a href="studDoAssessments.aspx"><em class="fa fa-home">&nbsp;</em> Home</a></li>
             <li id="stuViewAssessLink" runat="server"><a href="studViewAssessments.aspx"><em class="fa fa-graduation-cap">&nbsp;</em> Scores</a></li>
-            <li id="stuaboutLink" runat="server"><a href="about.aspx"><em class="fa fa-info">&nbsp;&nbsp;&nbsp;</em> About</a></li>
+            <li id="stuaboutLink" runat="server"><a href="about.aspx"><em class="fa fa-info">&nbsp;&nbsp;&nbsp;</em> About Us</a></li>
         <%
                       }
         }

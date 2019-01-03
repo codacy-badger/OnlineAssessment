@@ -6,6 +6,7 @@
             <h2 style="margin-bottom: 5px; font-size: 20px;">Select an Assessment</h2>
             <h4>
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater1_ItemCommand">
+                <HeaderTemplate></HeaderTemplate>
                 <ItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server" >
                         <asp:Table runat="server" class="table table-responsive table-hover">

@@ -2,6 +2,9 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web.UI.WebControls;
 
 namespace OnlineAssessment
@@ -50,16 +53,45 @@ namespace OnlineAssessment
 
         protected void btnDone_Click(object sender, EventArgs e)
         {
-            if (txtDesc.Text != "")
-                addQuestion();
+            if (Page.IsValid)
+            {
+                error1.Text = "";
+                if (txtDesc.Text != "")
+                    addQuestion();
 
-            MultiView1.ActiveViewIndex = 1;
-            btnFinish.Visible = true;
-            btnAddMore.Visible = true;
+                MultiView1.ActiveViewIndex = 1;
+                btnFinish.Visible = true;
+                btnAddMore.Visible = true;
+            }
+            else
+            {
+                error1.Text = "Cannot submit! Make sure all fields are valid!";
+            }
         }
 
         protected void btnFinish_Click(object sender, EventArgs e)
         {
+            Repeater1.DataSource = SqlDataSource2;
+            Repeater1.DataBind();
+            if (Repeater1.Items.Count == 0)
+            {
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+                SqlCommand cmd;
+
+
+                string query = "DELETE FROM Question WHERE assessID = @param1";
+
+                cmd = new SqlCommand(query, con);
+
+                cmd.Parameters.Add("@param1", SqlDbType.Int).Value = Session["assessID"];
+
+                con.Open();
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                con.Close();
+            }
             Response.Redirect("~/lectViewAssessments.aspx");
         }
 
@@ -73,6 +105,15 @@ namespace OnlineAssessment
 
         protected void addQuestion()
         {
+            // Image Upload
+            byte[] data = null;
+            if (imageUpload.HasFile)
+            {
+                imageUpload.PostedFile.SaveAs(Server.MapPath("~/Images/temp.jpeg"));
+                data = File.ReadAllBytes(Server.MapPath("~/Images/temp.jpeg"));
+            }
+            
+
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
             SqlCommand cmd;
@@ -91,14 +132,22 @@ namespace OnlineAssessment
                 con.Close();
             }
 
-            string query = "INSERT INTO Question(assessID, questName, mark) " +
-            "VALUES (@param1, @param2, @param3)";
+            string query = "INSERT INTO Question(assessID, questName, mark, image) " +
+            "VALUES (@param1, @param2, @param3, @param4)";
 
             cmd = new SqlCommand(query, con);
 
             cmd.Parameters.Add("@param1", SqlDbType.Int).Value = assessID;
             cmd.Parameters.Add("@param2", SqlDbType.NVarChar).Value = txtDesc.Text;
             cmd.Parameters.Add("@param3", SqlDbType.Int).Value = ddlMark.SelectedValue;
+            if (data != null)
+            {
+                cmd.Parameters.Add("@param4", SqlDbType.VarBinary).Value = data;
+            }
+            else
+            {
+                cmd.Parameters.Add("@param4", SqlDbType.VarBinary).Value = DBNull.Value;
+            }
 
             con.Open();
             cmd.CommandType = CommandType.Text;
