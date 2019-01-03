@@ -150,6 +150,16 @@ namespace OnlineAssessment
                 correct_ans + " correct answers out of " + total_question + "<br/>" +
                 "Total mark: " + finalmark;
 
+
+            //send email
+            string name = Session["username"].ToString();
+            string email = Session["email"].ToString();
+            string assessName = Session["assessName"].ToString();
+            string body = "Dear " + name + ", your assessment score for " + assessName + " is " + finalmark + "%. ";
+            string subject = "Assessment Score for " + assessName;
+            
+            Global.Email(email, body, subject, "assessmentpointassignment@gmail.com", "Assessment Point");
+            
         }
 
 

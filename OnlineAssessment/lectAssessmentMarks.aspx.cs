@@ -60,6 +60,17 @@ namespace OnlineAssessment
                 displayMsg.Visible = true;
                 error1.Attributes.Remove("Style");
                 error1.Text = "";
+                //send email
+                string stuEmail = Session["stuEmail"].ToString();
+                string stuName = Session["stuName"].ToString();
+                string assessName = Session["assessName"].ToString();
+                string to = stuEmail;
+                string body = "Dear " + stuName + ", your assessment score for " + assessName + " is " + finalmark + "%. ";
+                string subject = "Assessment Score for " + assessName;
+
+
+
+                Global.Email(to, body, subject, "assessmentpointassignment@gmail.com", "Assessment Point");
             }
             else
             {
@@ -100,6 +111,9 @@ namespace OnlineAssessment
         {
             Response.Redirect("~/lectViewAssessmentList.aspx");
         }
+
+        
+
     }
 
 }

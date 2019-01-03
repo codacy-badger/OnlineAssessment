@@ -110,6 +110,7 @@ namespace OnlineAssessment
                         con.Close();
                         Session["userID"] = stuID;
                         Session["username"] = name;
+                        Session["email"] = Request.Form["txtEmail"];
                         Session["gender"] = gender;
                         Session["role"] = "Student";
 

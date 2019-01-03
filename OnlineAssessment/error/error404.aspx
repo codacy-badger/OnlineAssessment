@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/assessment.Master" AutoEventWireup="true" CodeBehind="error404.aspx.cs" Inherits="OnlineAssessment.error.error404
-    " %>
+﻿<%@ Page Language="C#" MasterPageFile="~/assessment.Master" AutoEventWireup="true" CodeBehind="error404.aspx.cs" Inherits="OnlineAssessment.error.error404" %>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <br/><br/>
     <br/><br/>

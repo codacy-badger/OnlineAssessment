@@ -73,6 +73,7 @@
     <Content Include="EmptyRepeater.ascx" />
     <Content Include="error\error404.aspx" />
     <Content Include="error\genericError.aspx" />
+    <Content Include="genderPic\femalePic.ascx" />
     <Content Include="lectTreeView.ascx" />
     <Content Include="lectViewAssessmentList.aspx" />
     <Content Include="lectViewAssessments.aspx" />
@@ -92,7 +93,13 @@
     <Content Include="Images\Subjuct.png" />
     <Content Include="login.aspx" />
     <Content Include="lectAssessmentMarks.aspx" />
+    <Content Include="genderPic\malePic.ascx" />
     <Content Include="register.aspx" />
+    <Content Include="sideNav\bothSideNav.ascx" />
+    <Content Include="sideNav\lectSideNav.ascx" />
+    <Content Include="sideNav\lectStatus.ascx" />
+    <Content Include="sideNav\studSideNav.ascx" />
+    <Content Include="sideNav\studStatus.ascx" />
     <Content Include="studDoAssessments.aspx" />
     <Content Include="studViewAssessments.aspx" />
     <Content Include="studDoMCQ.aspx" />
@@ -101,6 +108,10 @@
     <Content Include="lectSubjects.aspx" />
     <Content Include="studViewMCQ.aspx" />
     <Content Include="studViewSubjective.aspx" />
+    <Content Include="topNav\genericTopNav.ascx" />
+    <Content Include="topNav\lectTopNav.ascx" />
+    <Content Include="topNav\logout.ascx" />
+    <Content Include="topNav\studTopNav.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -133,6 +144,13 @@
     </Compile>
     <Compile Include="error\genericError.aspx.designer.cs">
       <DependentUpon>genericError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="genderPic\femalePic.ascx.cs">
+      <DependentUpon>femalePic.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="genderPic\femalePic.ascx.designer.cs">
+      <DependentUpon>femalePic.ascx</DependentUpon>
     </Compile>
     <Compile Include="lectTreeView.ascx.cs">
       <DependentUpon>lectTreeView.ascx</DependentUpon>
@@ -214,6 +232,13 @@
     <Compile Include="assessment.Master.designer.cs">
       <DependentUpon>assessment.Master</DependentUpon>
     </Compile>
+    <Compile Include="genderPic\malePic.ascx.cs">
+      <DependentUpon>malePic.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="genderPic\malePic.ascx.designer.cs">
+      <DependentUpon>malePic.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
@@ -221,6 +246,41 @@
     </Compile>
     <Compile Include="register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sideNav\bothSideNav.ascx.cs">
+      <DependentUpon>bothSideNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sideNav\bothSideNav.ascx.designer.cs">
+      <DependentUpon>bothSideNav.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="sideNav\lectSideNav.ascx.cs">
+      <DependentUpon>lectSideNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sideNav\lectSideNav.ascx.designer.cs">
+      <DependentUpon>lectSideNav.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="sideNav\lectStatus.ascx.cs">
+      <DependentUpon>lectStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sideNav\lectStatus.ascx.designer.cs">
+      <DependentUpon>lectStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="sideNav\studSideNav.ascx.cs">
+      <DependentUpon>studSideNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sideNav\studSideNav.ascx.designer.cs">
+      <DependentUpon>studSideNav.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="sideNav\studStatus.ascx.cs">
+      <DependentUpon>studStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sideNav\studStatus.ascx.designer.cs">
+      <DependentUpon>studStatus.ascx</DependentUpon>
     </Compile>
     <Compile Include="studDoAssessments.aspx.cs">
       <DependentUpon>studDoAssessments.aspx</DependentUpon>
@@ -277,6 +337,34 @@
     </Compile>
     <Compile Include="studViewSubjective.aspx.designer.cs">
       <DependentUpon>studViewSubjective.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="topNav\genericTopNav.ascx.cs">
+      <DependentUpon>genericTopNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="topNav\genericTopNav.ascx.designer.cs">
+      <DependentUpon>genericTopNav.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="topNav\lectTopNav.ascx.cs">
+      <DependentUpon>lectTopNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="topNav\lectTopNav.ascx.designer.cs">
+      <DependentUpon>lectTopNav.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="topNav\logout.ascx.cs">
+      <DependentUpon>logout.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="topNav\logout.ascx.designer.cs">
+      <DependentUpon>logout.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="topNav\studTopNav.ascx.cs">
+      <DependentUpon>studTopNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="topNav\studTopNav.ascx.designer.cs">
+      <DependentUpon>studTopNav.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -22,158 +22,13 @@
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <%
-                    if (Session["role"] != null)
-                    {
-                %>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <%
-                    }
-                %>
-                
-                
-                <%
-                    if (Session["role"] != null)
-                    {
-                    string role = Session["role"].ToString();
-                    if (role == "Lecturer")
-                    {
-                %>
-
-                <a class="navbar-brand w3-hover-sepia" href="lectViewAssessments.aspx">ASSESSMENT <span>POINT</span></a>
-                
-                
-                <%
-                    }
-                    else if (role == "Student")
-                    {
-                %>
-                
-                
-                    <a class="navbar-brand w3-hover-sepia" href="studDoAssessments.aspx">ASSESSMENT <span>POINT</span></a>
-                    
-                    
-                <%
-                    }
-                    }
-                    else
-                    {
-                %>
-                
-                        <a class="navbar-brand w3-hover-sepia" href="login.aspx">ASSESSMENT <span>POINT</span></a>
-                <%
-                    }
-                %>
-
-                <%
-                    if (Session["role"] != null)
-                    {
-                %>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown "><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <em class="fa fa-user"></em><span class="label label-info"></span>
-                    </a>
-                        <ul class="dropdown-menu dropdown-alerts" style="width:inherit">
-                            <li><a href="login.aspx">
-                                <div>
-                                    <em class="fa fa-sign-out"></em>Log Out
-                                </div>
-                            </a></li>
-                        </ul>
-                    </li>
-                </ul>
-                    <%
-                    }
-                    %>
+               <asp:ContentPlaceHolder runat="server" ID="topNavPlaceholder"></asp:ContentPlaceHolder>
 
             </div>
         </div>
-        <!-- /.container-fluid -->
     </nav>
 
-    <%
-        if (Session["role"] != null)
-        {
-    %>
-                  
-        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-        <div class="profile-sidebar">
-        <div class="profile-userpic">
-            
-            <% if (Session["gender"].ToString().ToUpper().Equals("MALE"))
-               { %>
-                <img src="Images/maleUser.svg" class="img-responsive" alt="">
-                <%
-               }
-               else
-               { %>
-                <img src="Images/femaleUser.svg" class="img-responsive" alt="">
-                
-                <%
-               } %>
-            
-
-        
-        </div>
-        <div class="profile-usertitle">
-        <div class="profile-usertitle-name"><asp:Label ID="userName" runat="server" Text=""></asp:Label></div>
-            
-            
-            
-            <%
-                string role = Session["role"].ToString();
-                if (role == "Lecturer")
-                {
-            %>
-
-        <div class="profile-usertitle-status"><span class="indicator label-success"></span>Lecturer</div>
-                
-                
-            <%
-                }
-                else if (role == "Student")
-                {
-            %>
-            
-                <div class="profile-usertitle-status"><span class="indicator label-info"></span>Student</div>
-                
-            <%
-                }
-            %>
-
-        </div>
-        <div class="clear"></div>
-        </div>
-        <div class="divider"></div>
-            <ul class="nav menu">
-
-                  <%
-                      if (role == "Lecturer")
-                      {
-                  %>
-            <li id="lectViewAssessmentsLink" runat="server"><a href="lectViewAssessments.aspx"><em class="fa fa-home">&nbsp;</em> Home</a></li>
-            <li id="lecCreateAssessLink" runat="server"><a href="lectMakeAssessments.aspx"><em class="fa fa-file-text-o">&nbsp;&nbsp;</em> Create</a></li>
-            <li id="lecSubLink" runat="server"><a href="lectSubjects.aspx"><em class="fa fa-th-list">&nbsp;</em> Subjects</a></li>
-            <li id="lecaboutLink" runat="server"><a href="about.aspx"><em class="fa fa-info">&nbsp;&nbsp;&nbsp;</em> About Us</a></li>
-            <%
-                      }
-                      else if (role == "Student")
-                      {
-            %>
-            <li id="studDoAssessmentsLink" runat="server"><a href="studDoAssessments.aspx"><em class="fa fa-home">&nbsp;</em> Home</a></li>
-            <li id="stuViewAssessLink" runat="server"><a href="studViewAssessments.aspx"><em class="fa fa-graduation-cap">&nbsp;</em> Scores</a></li>
-            <li id="stuaboutLink" runat="server"><a href="about.aspx"><em class="fa fa-info">&nbsp;&nbsp;&nbsp;</em> About Us</a></li>
-        <%
-                      }
-        }
-        %>
-            </ul>
-    </div>
+<asp:ContentPlaceHolder runat="server" ID="sideNavPlaceholder"></asp:ContentPlaceHolder>
     <%
         if (Session["role"] != null)
         {
@@ -224,14 +79,12 @@
                     <%
                         }
                     %>
-                
 
-                
-                </p>
                 </div>
             </form>
         </div>
-</body>
+        </div>
+        </body>
 
 </html>
 

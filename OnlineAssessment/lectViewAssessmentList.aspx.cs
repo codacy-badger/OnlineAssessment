@@ -42,9 +42,11 @@ namespace OnlineAssessment
             Label stuAssessID = (Label)e.Item.FindControl("stuAssessID");
             Label stuID = (Label)e.Item.FindControl("lblStuID");
             Label stuName = (Label)e.Item.FindControl("lblStudName");
+            Label stuEmail = (Label)e.Item.FindControl("lblEmail");
             Session["stuAssessID"] = stuAssessID.Text;
             Session["stuID"] = stuID.Text;
             Session["stuName"] = stuName.Text;
+            Session["stuEmail"] = stuEmail.Text;
             Response.Redirect("~/lectAssessmentMarks.aspx");
 
         }

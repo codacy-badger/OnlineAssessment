@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI;
 
 namespace OnlineAssessment
 {
@@ -6,50 +7,32 @@ namespace OnlineAssessment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            String username = (String)Session["username"];
-            if (Session["gender"] != null)
+            Control topNavControl;
+            if (Session["role"] != null)
             {
-                if (Session["gender"].ToString().ToUpper().Equals("MALE"))
+                Control sideNavControl = LoadControl("sideNav/bothSideNav.ascx");
+                string role = Session["role"].ToString();
+                if (role == "Lecturer")
                 {
-                    username = "Mr. " + username;
+                    topNavControl = LoadControl("topNav/lectTopNav.ascx");
                 }
                 else
                 {
-                    username = "Ms. " + username;
+                    topNavControl = LoadControl("topNav/studTopNav.ascx");
                 }
+                topNavPlaceholder.Controls.Add(topNavControl);
+                sideNavPlaceholder.Controls.Add(sideNavControl);
             }
-                
-
-            userName.Text = username;
+            else
+            {
+                topNavControl = LoadControl("topNav/genericTopNav.ascx");
+                topNavPlaceholder.Controls.Add(topNavControl);
+            }
+            
 
             Response.Cache.SetNoStore();
 
-            String activepage = Request.RawUrl;
-            if (activepage.Contains("lectViewAssessments.aspx"))
-            {
-                lectViewAssessmentsLink.Attributes.Add("class", "active");
-            }
-            else if (activepage.Contains("lectMakeAssessments.aspx"))
-            {
-                lecCreateAssessLink.Attributes.Add("class", "active");
-            }
-            else if (activepage.Contains("lectSubjects.aspx"))
-            {
-                lecSubLink.Attributes.Add("class", "active");
-            }
-            else if (activepage.Contains("studDoAssessments.aspx"))
-            {
-                studDoAssessmentsLink.Attributes.Add("class", "active");
-            }
-            else if (activepage.Contains("studViewAssessments.aspx"))
-            {
-                stuViewAssessLink.Attributes.Add("class", "active");
-            }
-            else if (activepage.Contains("about.aspx"))
-            {
-                stuaboutLink.Attributes.Add("class", "active");
-                lecaboutLink.Attributes.Add("class", "active");
-            }
+            
         }
 
     }

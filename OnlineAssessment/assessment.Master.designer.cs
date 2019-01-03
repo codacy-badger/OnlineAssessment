@@ -13,76 +13,22 @@ namespace OnlineAssessment {
     public partial class assessment {
         
         /// <summary>
-        /// userName control.
+        /// topNavPlaceholder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userName;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder topNavPlaceholder;
         
         /// <summary>
-        /// lectViewAssessmentsLink control.
+        /// sideNavPlaceholder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lectViewAssessmentsLink;
-        
-        /// <summary>
-        /// lecCreateAssessLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lecCreateAssessLink;
-        
-        /// <summary>
-        /// lecSubLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lecSubLink;
-        
-        /// <summary>
-        /// lecaboutLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lecaboutLink;
-        
-        /// <summary>
-        /// studDoAssessmentsLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl studDoAssessmentsLink;
-        
-        /// <summary>
-        /// stuViewAssessLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stuViewAssessLink;
-        
-        /// <summary>
-        /// stuaboutLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stuaboutLink;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder sideNavPlaceholder;
         
         /// <summary>
         /// SiteMapPath1 control.

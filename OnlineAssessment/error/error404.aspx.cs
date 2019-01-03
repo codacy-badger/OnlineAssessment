@@ -2,7 +2,7 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace OnlineAssessment
+namespace OnlineAssessment.error
 {
     public partial class error404 : System.Web.UI.Page
     {
