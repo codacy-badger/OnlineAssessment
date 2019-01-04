@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,11 @@ namespace OnlineAssessment.topNav
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void logoText_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/login.aspx");
         }
     }
 }

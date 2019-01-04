@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
@@ -35,7 +36,14 @@ namespace OnlineAssessment
             Session["subjectCode"] = subjectCode.Text;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             SqlCommand cmd = new SqlCommand("select * FROM Subject WHERE subjectCode= '" + Session["subjectCode"] + "'", con);
             using (SqlDataReader rdr = cmd.ExecuteReader())
             {
@@ -58,7 +66,14 @@ namespace OnlineAssessment
             {
                 SqlCommand cmd2 = new SqlCommand("delete FROM enrollLecturer WHERE lecID = " + Int16.Parse(Session["userID"].ToString()) + " AND subjectID = " + Int16.Parse(Session["subjectID"].ToString()), con);
 
-                con.Open();
+                try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                 cmd2.ExecuteNonQuery();
                 con.Close();
 

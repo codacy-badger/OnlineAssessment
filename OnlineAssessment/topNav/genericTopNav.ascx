@@ -1,3 +1,3 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="genericTopNav.ascx.cs" Inherits="OnlineAssessment.topNav.genericTopNav" %>
 
-<a class="navbar-brand w3-hover-sepia" href="login.aspx">ASSESSMENT <span>POINT</span></a>
+<asp:LinkButton id="logoText" class="navbar-brand w3-hover-sepia" runat="server" OnClick="logoText_Click">ASSESSMENT <span>POINT</span></asp:LinkButton>

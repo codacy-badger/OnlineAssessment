@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -64,12 +65,26 @@ namespace OnlineAssessment
             cmd.Parameters.Add("@param4", SqlDbType.Int).Value = ddlSubject.SelectedValue;
             cmd.Parameters.Add("@param5", SqlDbType.NVarChar).Value = Session["userID"];
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd.CommandType = CommandType.Text;
             cmd.ExecuteNonQuery();
             con.Close();
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             SqlCommand getAssessID = new SqlCommand("select MAX(assessID) from Assessment", con);
             assessID = (int)getAssessID.ExecuteScalar();
             con.Close();

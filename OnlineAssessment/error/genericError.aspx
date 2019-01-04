@@ -6,10 +6,9 @@
     <div class="row w3-animate-opacity">
     <div class="col-xs-10 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
     <div class="login-panel panel panel-default">
-    <div class="panel-heading">Log in</div>
     <div class="panel-body">
 
-    <div style="font-size: 15px">An Error Has Occured! We apologize for the inconvenience.
+    <div style="font-size: 15px">Something went wrong! We apologize for the inconvenience.
     </div>
     </div>
     </div>

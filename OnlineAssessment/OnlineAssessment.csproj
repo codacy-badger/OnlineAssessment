@@ -43,10 +43,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CCSH, Version=1.0.1572.26461, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CCSH.dll</HintPath>
+    </Reference>
+    <Reference Include="ExceptionManagers, Version=1.0.1572.27955, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ExceptionManagers.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -71,6 +85,7 @@
       <DependentUpon>Assessment.mdf</DependentUpon>
     </Content>
     <Content Include="EmptyRepeater.ascx" />
+    <Content Include="error\databaseError.aspx" />
     <Content Include="error\error404.aspx" />
     <Content Include="error\genericError.aspx" />
     <Content Include="genderPic\femalePic.ascx" />
@@ -130,6 +145,13 @@
     </Compile>
     <Compile Include="EmptyRepeater.ascx.designer.cs">
       <DependentUpon>EmptyRepeater.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="error\databaseError.aspx.cs">
+      <DependentUpon>databaseError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error\databaseError.aspx.designer.cs">
+      <DependentUpon>databaseError.aspx</DependentUpon>
     </Compile>
     <Compile Include="error\error404.aspx.cs">
       <DependentUpon>error404.aspx</DependentUpon>

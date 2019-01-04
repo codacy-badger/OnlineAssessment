@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -68,7 +69,14 @@ namespace OnlineAssessment
                 cmd.Parameters.Add("@param3", SqlDbType.NVarChar).Value = txtEmail.Text.ToUpper();
                 cmd.Parameters.Add("@param4", SqlDbType.NVarChar).Value = rblGender.SelectedValue;
 
-                con.Open();
+                try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
 
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
@@ -90,7 +98,14 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
             SqlCommand cmd;
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             query1 = "Select * from Lecture where email = '" + txtEmail.Text.ToUpper() + "'";
             cmd = new SqlCommand(query1, con);
             SqlDataAdapter da = new SqlDataAdapter();
@@ -103,7 +118,14 @@ namespace OnlineAssessment
             }
             con.Close();
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             query2 = "Select * from Student where email = '" + txtEmail.Text.ToUpper() + "'";
             cmd = new SqlCommand(query2, con);
             SqlDataAdapter da1 = new SqlDataAdapter();

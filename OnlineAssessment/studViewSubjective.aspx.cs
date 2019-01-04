@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -13,7 +14,14 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
             string query = "SELECT lecName from Lecture L, Assessment A, Student_Assessment SA WHERE L.lecID = A.lecID AND " +
                 "SA.assessID = A.assessID AND SA.stuAssessID = " + Convert.ToInt32(Session["stuAssessID"].ToString());
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             SqlCommand cmd = new SqlCommand(query, con);
 
             string getLecName = cmd.ExecuteScalar().ToString();

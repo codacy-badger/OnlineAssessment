@@ -19,6 +19,7 @@
 
 </head>
 <body style="width: 90%; margin-left: 5%;" >
+<form runat="server">
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -44,7 +45,6 @@
                 }
             %>
             <%-- Content --%>
-            <form runat="server">
                 <%-- SiteMapPath & ContentPlaceHolder --%>
                 <div class="row breadcrumb">
 
@@ -81,9 +81,9 @@
                     %>
 
                 </div>
-            </form>
         </div>
         </div>
+    </form>
         </body>
 
 </html>

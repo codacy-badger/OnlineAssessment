@@ -1,9 +1,8 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Net.Mail;
-using System.Text;
 using System.Web.SessionState;
 
 namespace OnlineAssessment
@@ -36,7 +35,7 @@ namespace OnlineAssessment
             {
                 if (Session.IsNewSession || Session.Count < 1)
                 {
-                    if (!Context.Request.Url.AbsoluteUri.ToLower().Contains("/login.aspx") && !Context.Request.Url.AbsoluteUri.ToLower().Contains("/register.aspx") && !Context.Request.Url.AbsoluteUri.ToLower().Contains("/about.aspx"))
+                    if (!Context.Request.Url.AbsoluteUri.ToLower().Contains("/login.aspx") && !Context.Request.Url.AbsoluteUri.ToLower().Contains("/register.aspx") && !Context.Request.Url.AbsoluteUri.ToLower().Contains("/about.aspx") && !Context.Request.Url.AbsoluteUri.ToLower().Contains("error"))
                     {
                         // redirect to your login page
                         Context.Response.Redirect("~/login.aspx?resession=yes");
@@ -44,28 +43,6 @@ namespace OnlineAssessment
                 }
             }
         }
-
-        public static void Email(string to, string body, string subject, string fromAddress, string fromDisplay)
-        {
-            try
-            {
-                MailMessage mail = new MailMessage();
-                mail.Body = body;
-                mail.IsBodyHtml = true;
-                mail.To.Add(new MailAddress(to));
-                mail.From = new MailAddress(fromAddress, fromDisplay, Encoding.UTF8);
-                mail.Subject = subject;
-                mail.SubjectEncoding = Encoding.UTF8;
-                mail.Priority = MailPriority.Normal;
-
-                SmtpClient smtpClient = new SmtpClient();
-                smtpClient.Send(mail);
-            }
-            catch (Exception ex)
-            {
-                
-            }
-        }
-
+        
     }
 }

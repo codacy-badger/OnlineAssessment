@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -20,7 +21,14 @@ namespace OnlineAssessment
                 string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
                 SqlConnection con = new SqlConnection(strCon);
 
-                con.Open();
+                try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                 SqlCommand getSubject = new SqlCommand("SELECT (subjectCode + ' ' + subjectName) AS SUBJECT " +
                "FROM Subject WHERE subjectID = " + subjectID, con);
                 string subject = getSubject.ExecuteScalar().ToString();
@@ -86,7 +94,14 @@ namespace OnlineAssessment
 
                 cmd.Parameters.Add("@param1", SqlDbType.Int).Value = Session["assessID"];
 
-                con.Open();
+                try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
@@ -118,7 +133,14 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
             SqlCommand cmd;
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             SqlCommand CountAssess = new SqlCommand("Select count(*) from Assessment", con);
             int count = (int)CountAssess.ExecuteScalar();
             int assessID = 1001;
@@ -126,7 +148,14 @@ namespace OnlineAssessment
 
             if (count > 0)
             {
-                con.Open();
+                try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                 cmd = new SqlCommand("select MAX(assessID) from Assessment", con);
                 assessID = (int)cmd.ExecuteScalar();
                 con.Close();
@@ -149,7 +178,14 @@ namespace OnlineAssessment
                 cmd.Parameters.Add("@param4", SqlDbType.VarBinary).Value = DBNull.Value;
             }
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd.CommandType = CommandType.Text;
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
@@ -173,7 +209,14 @@ namespace OnlineAssessment
                 SqlConnection con = new SqlConnection(strCon);
                 SqlCommand cmd = new SqlCommand("DELETE from Question WHERE questID = " + questID, con);
 
-                con.Open();
+                try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                 cmd.ExecuteNonQuery();
                 con.Close();
 
@@ -197,7 +240,14 @@ namespace OnlineAssessment
                     + question + "', mark = " + mark +
                     " WHERE questID = " + questID + " AND assessID = " + assessID, con);
 
-                con.Open();
+                try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                 cmd.ExecuteNonQuery();
                 con.Close();
                 DataList1.EditItemIndex = -1;

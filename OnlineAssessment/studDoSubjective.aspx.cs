@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -36,7 +37,14 @@ namespace OnlineAssessment
 
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             string query = "INSERT INTO Student_Assessment(status, score, stuID, assessID)" +
                 "VALUES (@param1, @param2, @param3, @param4)";
 
@@ -55,7 +63,14 @@ namespace OnlineAssessment
             SqlConnection con1 = new SqlConnection(strCon1);
             SqlCommand cmd1;
 
-            con1.Open();
+            try
+{
+    con1.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd1 = new SqlCommand("select MAX(stuAssessID) from Student_Assessment", con1);
             int stuAssID = (int)cmd1.ExecuteScalar();
             con1.Close();
@@ -79,7 +94,14 @@ namespace OnlineAssessment
         {
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             string query = "INSERT INTO StudentAnswer(stuAssessID, questID, answer)" +
                 "VALUES (@param1, @param2, @param3)";
 

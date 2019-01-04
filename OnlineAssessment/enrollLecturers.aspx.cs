@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -32,7 +33,14 @@ namespace OnlineAssessment
             cmd.Parameters.Add("@param1", SqlDbType.Int).Value = Session["userID"];
             cmd.Parameters.Add("@param2", SqlDbType.Int).Value = ddlSubjectEnroll.SelectedValue;
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd.CommandType = CommandType.Text;
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();

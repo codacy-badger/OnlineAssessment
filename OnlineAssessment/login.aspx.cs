@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -46,7 +47,14 @@ namespace OnlineAssessment
             {
                 if (validateLogin() == 1) // lecturer
                 {
-                    con.Open();
+                    try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                     SqlCommand getPsw = new SqlCommand("SELECT psw from Lecture WHERE email = '" + Request.Form["txtEmail"] + "'", con);
                     string psw = getPsw.ExecuteScalar().ToString().Replace(" ", "");
 
@@ -54,7 +62,14 @@ namespace OnlineAssessment
 
                     if (psw == Request.Form["txtPassword"])
                     {
-                        con.Open();
+                        try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                         SqlCommand getName = new SqlCommand("SELECT lecID, lecName, gender from Lecture WHERE email = '" + Request.Form["txtEmail"] + "'", con);
                         string name = "";
                         string gender = "";
@@ -85,7 +100,14 @@ namespace OnlineAssessment
                 }
                 else // student
                 {
-                    con.Open();
+                    try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                     SqlCommand getPsw = new SqlCommand("SELECT psw from Student WHERE email = '" + Request.Form["txtEmail"].ToUpper() + "'", con);
                     string psw = getPsw.ExecuteScalar().ToString().Replace(" ", "");
                     con.Close();
@@ -93,7 +115,14 @@ namespace OnlineAssessment
                     if (psw == Request.Form["txtPassword"])
                     {
 
-                        con.Open();
+                        try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                         SqlCommand getName = new SqlCommand("SELECT stuID, stuName, gender from Student WHERE email = '" + Request.Form["txtEmail"].ToUpper() + "'", con);
                         string name = "";
                         string gender = "";
@@ -142,7 +171,14 @@ namespace OnlineAssessment
             //Check email from lecturer, return 1 if lecturer
             query1 = "Select * from Lecture where email = '" + Request.Form["txtEmail"].ToUpper() + "'";
             cmd = new SqlCommand(query1, con);
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             da = new SqlDataAdapter();
             da.SelectCommand = cmd;
             ds = new DataSet();
@@ -157,7 +193,14 @@ namespace OnlineAssessment
             //Check email from lecturer, return 2 if student
             query2 = "Select * from Student where email = '" + Request.Form["txtEmail"].ToUpper() + "'";
             cmd = new SqlCommand(query2, con);
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             da = new SqlDataAdapter();
             da.SelectCommand = cmd;
             ds = new DataSet();

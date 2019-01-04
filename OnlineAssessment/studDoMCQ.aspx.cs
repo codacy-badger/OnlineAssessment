@@ -1,8 +1,11 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Net.Mail;
+using System.Text;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
@@ -54,7 +57,14 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
             SqlCommand cmd;
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd = new SqlCommand("select MAX(stuAssessID) from Student_Assessment", con);
             int stuAssID = (int)cmd.ExecuteScalar();
             con.Close();
@@ -101,7 +111,14 @@ namespace OnlineAssessment
                 addStuAns(stuAssID, Convert.ToInt32(questID.Text));
 
 
-                con.Open();
+                try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
                 cmd = new SqlCommand("Select answer FROM Question WHERE questID = @questID", con);
                 cmd.Parameters.Add("@questID", SqlDbType.Int).Value = Convert.ToInt32(questID.Text);
 
@@ -158,7 +175,7 @@ namespace OnlineAssessment
             string body = "Dear " + name + ", your assessment score for " + assessName + " is " + finalmark + "%. ";
             string subject = "Assessment Score for " + assessName;
             
-            Global.Email(email, body, subject, "assessmentpointassignment@gmail.com", "Assessment Point");
+            Email(email, body, subject, "assessmentpointassignment@gmail.com", "Assessment Point");
             
         }
 
@@ -167,7 +184,14 @@ namespace OnlineAssessment
         {
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             string query = "INSERT INTO StudentAnswer(stuAssessID, questID, answer)" +
                 "VALUES (@param1, @param2, @param3)";
 
@@ -184,7 +208,14 @@ namespace OnlineAssessment
         {
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection con = new SqlConnection(strCon);
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             string query = "INSERT INTO Student_Assessment(status, score, stuID, assessID)" +
                 "VALUES (@param1, @param2, @param3, @param4)";
 
@@ -211,9 +242,38 @@ namespace OnlineAssessment
                 "', assessID = '" + assessID +
                 "' WHERE stuAssessID = " + stuAssID, con);
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+
+        protected void Email(string to, string body, string subject, string fromAddress, string fromDisplay)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+                mail.To.Add(new MailAddress(to));
+                mail.From = new MailAddress(fromAddress, fromDisplay, Encoding.UTF8);
+                mail.Subject = subject;
+                mail.SubjectEncoding = Encoding.UTF8;
+                mail.Priority = MailPriority.Normal;
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Send(mail);
+            }
+            catch (Exception)
+            {
+                Response.Write("Cannot send email! Please check your internet connection!");
+            }
         }
     }
 }

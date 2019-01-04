@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
@@ -30,7 +31,14 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
             SqlCommand cmd = new SqlCommand("delete FROM EnrollStudent WHERE enrollSID = '" + enrollSID + "'", con);
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd.ExecuteNonQuery();
             con.Close();
 

@@ -1,6 +1,9 @@
 ﻿using System;
+using ExceptionManagers;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace OnlineAssessment
@@ -70,7 +73,7 @@ namespace OnlineAssessment
 
 
 
-                Global.Email(to, body, subject, "assessmentpointassignment@gmail.com", "Assessment Point");
+                Email(to, body, subject, "assessmentpointassignment@gmail.com", "Assessment Point");
             }
             else
             {
@@ -91,7 +94,14 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
             SqlCommand cmd = new SqlCommand("update Student_Assessment set score = '" + finalmark + "', status = 'done' WHERE stuAssessID = " + stuAssID, con);
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -102,7 +112,14 @@ namespace OnlineAssessment
             SqlConnection con = new SqlConnection(strCon);
             SqlCommand cmd = new SqlCommand("update StudentAnswer set lecComment = '" + lecComment + "', stuScore= '" + stuScore + "' WHERE stuAssessID = " + stuAssessID + " AND questID = " + questID, con);
 
-            con.Open();
+            try
+{
+    con.Open();
+}
+catch (Exception ex)
+{
+    Response.Redirect(ExceptionManagersHandler.PublishException("MyApplication", ex));
+}
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -112,7 +129,27 @@ namespace OnlineAssessment
             Response.Redirect("~/lectViewAssessmentList.aspx");
         }
 
-        
+        protected void Email(string to, string body, string subject, string fromAddress, string fromDisplay)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+                mail.To.Add(new MailAddress(to));
+                mail.From = new MailAddress(fromAddress, fromDisplay, Encoding.UTF8);
+                mail.Subject = subject;
+                mail.SubjectEncoding = Encoding.UTF8;
+                mail.Priority = MailPriority.Normal;
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Send(mail);
+            }
+            catch (Exception)
+            {
+                Response.Write("Cannot send email! Please check your internet connection!");
+            }
+        }
 
     }
 
